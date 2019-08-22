@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import Imagepro 1.1
+
 Window {
 
     id:mainW
@@ -14,13 +15,16 @@ Window {
    // color: "transparent"
 
     //    color: "#272727";
-
-    flags: Qt.CursorShape |  Qt.WindowSystemMenuHint |Qt.FramelessWindowHint |  Qt.WindowMinimizeButtonHint | Qt.Window;
-
     ImageProItem{
         id:imageItem;
 
     }
+
+
+
+    flags: Qt.CursorShape |  Qt.WindowSystemMenuHint |Qt.FramelessWindowHint |  Qt.WindowMinimizeButtonHint | Qt.Window;
+
+
     TitleBar    //软件标题title
     {
         id: titleBar_mainWin;
@@ -50,6 +54,32 @@ Window {
         anchors.top: parent.top;
         anchors.topMargin: 120;
         anchors.leftMargin: 70;
+
+        MouseArea
+        {
+            id:maforpainting
+            visible:  false
+            anchors.fill:  parent
+            onPressed:
+            {
+                imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
+                console.log("ready2paintrec")
+                imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+            }
+            onPressAndHold:
+            {
+                console.log("painting")
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.recrealtimeshow()
+            }
+            onReleased:
+            {
+                console.log("ready2finsihrecpaint")
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.recpaint()
+            }
+
+        }
     }
     SegResultRect
     {  //  分割结果显示区域

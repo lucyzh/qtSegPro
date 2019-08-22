@@ -62,6 +62,18 @@ Rectangle {
               left_cToolButtonList.setChildrenColor(nIndex)
 
             }
+            MouseArea
+            {
+                id : rectoolma
+                anchors.fill: parent
+                onClicked:
+                {
+                    console.log("click ready to paint rec")
+                   // menuAllMouseArea.visible = false
+                    maforpainting.visible = true
+                    //allMouseArea.visible = false
+                }
+            }
 
 
         }

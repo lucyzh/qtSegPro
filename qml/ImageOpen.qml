@@ -15,10 +15,10 @@ Rectangle{
     {
         id: imgRes;
         cache: false;
-        height: parent.height/2;
-        width: parent.width/2;
+        height: parent.height*0.8;
+        width: parent.width;
         anchors.horizontalCenter: parent.horizontalCenter;
-        anchors.verticalCenter: parent.verticalCenter;
+        anchors.top :parent.top
         source: "image://colors/hello"
     }
 
@@ -33,9 +33,9 @@ Rectangle{
         {
             imgRes.source = "";
             imgRes.source = "image://colors/hello"
-            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<Fresh");
-            imageItem.processImage();
-            console.log("---------------------------Fresh");
+//            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<Fresh");
+//            imageItem.processImage();
+//            console.log("---------------------------Fresh");
         }
     }
 }

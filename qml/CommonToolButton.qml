@@ -54,13 +54,13 @@ Rectangle {
         {
             if(mouse.button === Qt.LeftButton)
             {
-                console.log("leftMouse->MenuButton");
+//                console.log("leftMouse->MenuButton");
             }else if(mouse.button === Qt.RightButton)
             {
-                console.log("rightMouse->MenuButton");
+//                console.log("rightMouse->MenuButton");
             }else if(mouse.button === Qt.MidButtonn)
             {
-                console.log("midMouse->MenuButton");
+//                console.log("midMouse->MenuButton");
             }
             cTool_Button.state = "pressed";
 
@@ -70,7 +70,7 @@ Rectangle {
             cTool_Button.state = "normal";
             //cTool_Button.color = "#404040"
             cToolButtonIndexBack(nIndex);
-            console.log("release->menuButton");
+//            console.log("release->menuButton");
         }
         onEntered:
         {
@@ -79,7 +79,7 @@ Rectangle {
                 cTool_Button.state = "hover";
                 //cTool_Button.color = "#212121"
             }
-            console.log("enter->menuButton");
+//            console.log("enter->menuButton");
         }
         onExited:
         {
@@ -87,11 +87,11 @@ Rectangle {
                 cTool_Button.state = "normal";
                // cTool_Button.color = "#404040"
             }
-            console.log("exit->menuButton");
+//            console.log("exit->menuButton");
         }
         onWheel:
         {
-            console.log("wheel->menuButton");
+//            console.log("wheel->menuButton");
         }
 
     }

@@ -49,7 +49,7 @@ public:
                 img = imageGlobal;
             }
 //            qDebug()<<imgPro.processImage(imgPro.image);
-            qDebug()<<"imageGlobalimageGlobalimageGlobal/////////////////////////"<< imageGlobal;
+           // qDebug()<<"imageGlobalimageGlobalimageGlobal/////////////////////////"<< imageGlobal;
             pixmap = QPixmap::fromImage(img);
         }
 

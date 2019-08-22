@@ -243,8 +243,6 @@ Rectangle {
     }
 
 
-
-
     MouseArea
     {
         id:menuAllMouseArea;
@@ -261,9 +259,10 @@ Rectangle {
             rect_MenuFile.visible = false;
             rect_MenuEdit.visible = false;
             rect_MenuTool.visible = false;
-            rect_MenuHelp.visible = false;
+//            rect_MenuHelp.visible = false;
             menuAllMouseArea.visible = false;
             console.log("set success");
+            menuAllMouseArea.visible = false
         }
 
     }

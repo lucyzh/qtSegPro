@@ -87,7 +87,7 @@ Rectangle {
         onReleased:
         {
             menuButtonIndexBack(nIndex);
-            console.log("release->menuButton");
+//            console.log("release->menuButton");
             if(nIndex>3)
             {
                 rect_MenuFile.visible = false;
@@ -101,14 +101,14 @@ Rectangle {
         {
             if(menu_Button.state === "normal")
                 menu_Button.state = "hover";
-            console.log("enter->menuButton");
+//            console.log("enter->menuButton");
             menu_Button.color = "#666666";
         }
         onExited:
         {
             if(menu_Button.state === "hover")
                 menu_Button.state = "normal";
-            console.log("exit->menuButton");
+//            console.log("exit->menuButton");
             menu_Button.color = "#474747";
         }
         onClicked:

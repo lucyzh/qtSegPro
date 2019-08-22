@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	DISCARDABLE	"C:\\Users\\SanguolianP\\Desktop\\ImageProFrameQML\\ImageProFrameQML\\IPFWIcon.ico"
+IDI_ICON1	ICON	DISCARDABLE	"F:\\QT\\segSystem\\ImageProFrameQML-master\\IPFWIcon.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0
