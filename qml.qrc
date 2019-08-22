@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>TextF.qml</file>
+        <file>TestQml.qml</file>
+        <file>qml/main.qml</file>
+        <file>qml/TitleButton.qml</file>
+        <file>qml/TitleBar.qml</file>
+        <file>qml/MyMenuBar.qml</file>
+        <file>qml/MyMenuButton.qml</file>
+        <file>qml/RightDockWin.qml</file>
+        <file>qml/CommonToolButton.qml</file>
+        <file>qml/StateBar.qml</file>
+        <file>qml/StateBarTools.qml</file>
+        <file>qml/SideBarButton.qml</file>
+        <file>qml/SegResultRect.qml</file>
+        <file>qml/ImageOpen.qml</file>
+        <file>qml/Image_Button.qml</file>
+        <file>qml/LeftToolBar.qml</file>
+        <file>qml/RightToolBar.qml</file>
+        <file>qml/ParameterRect.qml</file>
+        <file>qml/ParameterRectTwo.qml</file>
+    </qresource>
+</RCC>
