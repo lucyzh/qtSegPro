@@ -57,7 +57,7 @@ Window {
 
         MouseArea
         {
-            id:maforpainting
+            id:maforpaintingrec
             visible:  false
             anchors.fill:  parent
             onPressed:
@@ -77,6 +77,59 @@ Window {
                 console.log("ready2finsihrecpaint")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.recpaint()
+            }
+
+        }
+
+
+
+        MouseArea
+        {
+//            Timer
+//            {
+//                id: timerforpntpaint
+//                interval: 1;
+//                running: false
+//                repeat: true
+//                onTriggered: {
+//                    console.log("painting")
+//                    imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+//                    imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+//                    imageItem.pntpainting()
+//                }
+//            }
+
+            id:maforpaintingpnt
+            visible:  false
+            anchors.fill:  parent
+            onPressed:
+            {
+                imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
+                console.log("ready2paintpnt")
+                imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaintingstart()
+//                imageItem.startpntpaint()
+            }
+            onPositionChanged:
+            {
+                console.log("painting")
+                imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaint()
+            }
+//            onPressAndHold:
+//            {
+//                console.log("its onPressAndHold")
+
+//                timerforpntpaint.running = true
+//            }
+            onReleased:
+            {
+                timerforpntpaint.running = false
+                console.log("ready2finsihpntpaint")
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+//                imageItem.recpaint()
             }
 
         }

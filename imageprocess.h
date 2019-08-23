@@ -11,7 +11,7 @@
 typedef struct MyLine{
     QPoint startPnt;
     QPoint endPnt;
-}myLine;
+} myLine;
 
 class ImageProcess: public QQuickItem
 {
@@ -48,6 +48,8 @@ public:
     Q_INVOKABLE void setEndPnt(QPoint e);
     Q_INVOKABLE void getqmlmessage(int x , int y);
     Q_INVOKABLE void recrealtimeshow();
+    Q_INVOKABLE void pntpaint();
+    Q_INVOKABLE void pntpaintingstart();
 signals:
 
 

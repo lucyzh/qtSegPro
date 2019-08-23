@@ -125,7 +125,31 @@ void ImageProcess::getqmlmessage(int x, int y)
 
 void  ImageProcess::recrealtimeshow()
 {
-    update();
+//    update();
+}
+
+void  ImageProcess::pntpaint()
+{
+    QPainter painter(&imageGlobal);
+    QPen pen;
+    qDebug() << "startpnt" << startPnt.x()<< "   " << startPnt.y()<<endl;
+    qDebug() << "endpnt" << endPnt.x() << "   "<< endPnt.y() << endl;
+    pen.setColor(Qt::red);
+    pen.setWidth(4);
+    painter.setPen(pen);
+    painter.drawLine(points[points.size()-1]->startPnt,endPnt);
+    myLine *point = new myLine;
+    point->startPnt = startPnt;
+    point->endPnt = endPnt;
+    points.push_back(point);
+}
+
+void ImageProcess::pntpaintingstart()
+{
+    myLine *point = new myLine;
+    point->startPnt = startPnt;
+    point->endPnt = endPnt;
+    points.push_back(point);
 }
 //void ImageProcess::mousePressEvent(QMouseEvent *e)
 //{

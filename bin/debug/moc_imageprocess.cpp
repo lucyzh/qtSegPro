@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ImageProcess_t {
-    QByteArrayData data[12];
-    char stringdata0[104];
+    QByteArrayData data[14];
+    char stringdata0[130];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,12 +42,15 @@ QT_MOC_LITERAL(7, 60, 9), // "setEndPnt"
 QT_MOC_LITERAL(8, 70, 13), // "getqmlmessage"
 QT_MOC_LITERAL(9, 84, 1), // "x"
 QT_MOC_LITERAL(10, 86, 1), // "y"
-QT_MOC_LITERAL(11, 88, 15) // "recrealtimeshow"
+QT_MOC_LITERAL(11, 88, 15), // "recrealtimeshow"
+QT_MOC_LITERAL(12, 104, 8), // "pntpaint"
+QT_MOC_LITERAL(13, 113, 16) // "pntpaintingstart"
 
     },
     "ImageProcess\0openImage\0\0processImage\0"
     "recpaint\0setStartPnt\0e\0setEndPnt\0"
-    "getqmlmessage\0x\0y\0recrealtimeshow"
+    "getqmlmessage\0x\0y\0recrealtimeshow\0"
+    "pntpaint\0pntpaintingstart"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +60,7 @@ static const uint qt_meta_data_ImageProcess[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,13 +68,15 @@ static const uint qt_meta_data_ImageProcess[] = {
        0,       // signalCount
 
  // methods: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x02 /* Public */,
-       3,    0,   50,    2, 0x02 /* Public */,
-       4,    0,   51,    2, 0x02 /* Public */,
-       5,    1,   52,    2, 0x02 /* Public */,
-       7,    1,   55,    2, 0x02 /* Public */,
-       8,    2,   58,    2, 0x02 /* Public */,
-      11,    0,   63,    2, 0x02 /* Public */,
+       1,    0,   59,    2, 0x02 /* Public */,
+       3,    0,   60,    2, 0x02 /* Public */,
+       4,    0,   61,    2, 0x02 /* Public */,
+       5,    1,   62,    2, 0x02 /* Public */,
+       7,    1,   65,    2, 0x02 /* Public */,
+       8,    2,   68,    2, 0x02 /* Public */,
+      11,    0,   73,    2, 0x02 /* Public */,
+      12,    0,   74,    2, 0x02 /* Public */,
+      13,    0,   75,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QImage,
@@ -80,6 +85,8 @@ static const uint qt_meta_data_ImageProcess[] = {
     QMetaType::Void, QMetaType::QPoint,    6,
     QMetaType::Void, QMetaType::QPoint,    6,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,    9,   10,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -101,6 +108,8 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 4: _t->setEndPnt((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         case 5: _t->getqmlmessage((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 6: _t->recrealtimeshow(); break;
+        case 7: _t->pntpaint(); break;
+        case 8: _t->pntpaintingstart(); break;
         default: ;
         }
     }
@@ -135,13 +144,13 @@ int ImageProcess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 9;
     }
     return _id;
 }

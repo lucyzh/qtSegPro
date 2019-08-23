@@ -70,7 +70,8 @@ Rectangle {
                 {
                     console.log("click ready to paint rec")
                    // menuAllMouseArea.visible = false
-                    maforpainting.visible = true
+                    maforpaintingrec.visible = true
+                    maforpaintingpnt.visible = false
                     //allMouseArea.visible = false
                 }
             }
@@ -89,11 +90,23 @@ Rectangle {
             sTextText: "画笔工具";
             nTextSize: 7;
             nIndex: 1;
+            MouseArea
+            {
+                id : brushtoolma
+                anchors.fill: parent
+                onClicked:
+                {
+                    console.log("click ready to use brush")
+                   // menuAllMouseArea.visible = false
+                    maforpaintingrec.visible = false
+                    maforpaintingpnt.visible = true
+                    //allMouseArea.visible = false
+                }
+            }
             onCToolButtonIndexBack: {
 
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
-
 
             }
         }
