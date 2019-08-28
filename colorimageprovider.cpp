@@ -37,22 +37,21 @@ public:
         //            painter.scale(requestedSize.width() / width, requestedSize.height() / height);
         //        painter.drawText(QRectF(0, 0, width, height), Qt::AlignCenter, id);
 
-        if(id == "hello")
+        QImage img;
+        if(id == "img")
         {
-            QImage img;
-//                    img = QImage("images1/WindowBG.png");
-
             if(imageGlobal.isNull())   //如果还未打开图片，则默认加载一张
             {
                 img = QImage("/Users/zhuhui/Desktop/segmentation/timg.jpeg");
             }else {
                 img = imageGlobal;
             }
-//            qDebug()<<imgPro.processImage(imgPro.image);
-           // qDebug()<<"imageGlobalimageGlobalimageGlobal/////////////////////////"<< imageGlobal;
-            pixmap = QPixmap::fromImage(img);
-        }
 
+        }
+        else if (id == "seg") {
+            img = imageSeg;
+        }
+        pixmap = QPixmap::fromImage(img);
         return pixmap;
     }
 

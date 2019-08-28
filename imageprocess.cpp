@@ -8,6 +8,21 @@
 #include <QFont>
 #include <QPainter>
 
+//---------opencv libs--------
+
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
+#include <opencv2/imgproc/types_c.h>
+
+#include <iostream>
+
+//---------external file------------
+#include "convert.h"
+
+using namespace std;
+using namespace cv;
+
 ImageProcess::ImageProcess()
 {
 //    imageRes = QImage("C:/Users/SanguolianP/Desktop/imageTestqml4/qml/images/maininterface.jpg");
@@ -21,7 +36,7 @@ ImageProcess::~ImageProcess()
 QImage ImageProcess::openImage()
 {
     qDebug("open");
-    QString fileName = QFileDialog::getOpenFileName(
+    fileName = QFileDialog::getOpenFileName(
                 nullptr, "open image file",
                     ".",
                     "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
@@ -72,32 +87,6 @@ QImage ImageProcess::recpaint()
     painter.drawLine(startPnt,point2);
     painter.drawLine(point1,endPnt);
     painter.drawLine(point2,endPnt);
-
-//    for(int i = 0;i<lines.size();i++){              //重绘时需要画出所有线
-//        myLine* pLine = lines[i];
-//        painter.drawLine(pLine->startPnt,pLine->endPnt);
-//    }
-//    for(int i = 0;i<points.size();i++){
-//        myLine* pLine = points[i];
-//        painter.drawLine(pLine->startPnt,pLine->endPnt);
-//    }
-
-//    for(int i=0;i<rects.size();i++)
-//    {
-//        myLine* pLine = rects[i];
-//        QPoint point1;      //左下
-//        QPoint point2;      //右上
-//        point1.setX(pLine->startPnt.x());
-//        point1.setY(pLine->endPnt.y());
-
-//        point2.setX(pLine->endPnt.x());
-//        point2.setY(pLine->startPnt.y());
-//        painter.drawLine(pLine->startPnt,point1);
-//        painter.drawLine(pLine->startPnt,point2);
-//        painter.drawLine(point1,pLine->endPnt);
-//        painter.drawLine(point2,pLine->endPnt);
-//    }
-
     qDebug()<<"imageResimageResimageResimageRes+++++++++++++++"<<imageRes;
     qDebug("processed");
     return imageGlobal;
@@ -159,3 +148,25 @@ void ImageProcess::pntpaintingstart()
 //      isPressed = true;
 //      update();
 //}
+
+QImage ImageProcess::startSeg()
+{
+    cv::Mat ori = QImage2cvMat(imageGlobal,true,false);
+    cv::Mat img;
+    cvtColor(ori,img,CV_BGRA2BGR);
+//    mask.create(img.size(),CV_8UC1);
+    setRectInMask(img);
+    cv::Rect rect(/*rc_x*/ 200,/*rc_y*/ 100,/*rc_width*/ 600,/*rc_height*/ 800);
+    cv::grabCut(img, mask,rect,bgmodel,fgmodel,/*iteration*/1,GC_INIT_WITH_RECT);
+    cv::compare(mask,cv::GC_PR_FGD,mask, cv::CMP_EQ);
+    cv::Mat fgd(img.size(), CV_8UC3, cv::Scalar(128,128,128));
+    img.copyTo(fgd,mask);
+    imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
+    return imageSeg;
+}
+
+
+void ImageProcess::setRectInMask(Mat img)
+{
+    mask.create(img.size(), CV_8UC1);
+}

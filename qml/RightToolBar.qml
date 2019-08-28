@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import Imagepro 1.1
 
 Rectangle {    //右侧工具栏
 
@@ -14,6 +15,10 @@ Rectangle {    //右侧工具栏
         anchors.top: parent.top;
         anchors.topMargin: 211;
         source: "images/Main/Functional dividing line_@2x.png";
+    }
+
+    ImageProItem{
+        id:imageSeg
     }
 
 
@@ -183,7 +188,7 @@ Rectangle {    //右侧工具栏
 
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-
+              imageSeg.startSeg()
             }
         }
         CommonToolButton

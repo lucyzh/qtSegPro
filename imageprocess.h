@@ -8,6 +8,15 @@
 #include <vector>
 #include <QApplication>
 
+//---------opencv libs--------
+
+#include "opencv2/imgcodecs.hpp"
+#include "opencv2/highgui.hpp"
+#include "opencv2/imgproc.hpp"
+#include <iostream>
+using namespace std;
+using namespace cv;
+
 typedef struct MyLine{
     QPoint startPnt;
     QPoint endPnt;
@@ -30,6 +39,10 @@ public:
     int imagewidth;
     int imageheight;
 
+    //------------------grabCut params-------------
+    Mat mask,bgmodel, fgmodel;
+    QString fileName;
+
     int qmlwidth;
     int qmlheight;
     QPoint startPnt;
@@ -38,6 +51,8 @@ public:
     QVector<myLine*> points;
     QVector<myLine*> rects;
     QVector<myLine*> lines;
+
+
 
 public:
 
@@ -50,6 +65,11 @@ public:
     Q_INVOKABLE void recrealtimeshow();
     Q_INVOKABLE void pntpaint();
     Q_INVOKABLE void pntpaintingstart();
+
+    //--------------grabCut----------------
+    Q_INVOKABLE QImage startSeg();
+    Q_INVOKABLE void setRectInMask(cv::Mat);
+
 signals:
 
 

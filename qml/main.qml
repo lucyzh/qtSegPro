@@ -11,7 +11,7 @@ Window {
     height: 720;
     minimumWidth: 640;
     minimumHeight: 360;
-    title: qsTr("IPFW");
+    //title: qsTr("IPFW");
    // color: "transparent"
 
     //    color: "#272727";

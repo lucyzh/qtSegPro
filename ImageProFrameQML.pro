@@ -8,6 +8,10 @@ RC_ICONS = IPFWIcon.ico
 # deprecated API to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
+# add compile option
+QMAKE_CXXFLAGS += -std=libstdc++
+
+
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
@@ -15,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         colorimageprovider.cpp \
+        convert.cpp \
         externalvar.cpp \
         imageprocess.cpp \
         main.cpp
@@ -35,5 +40,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     colorimageprovider.h \
+    convert.h \
     externalvar.h \
     imageprocess.h
+
+# Configure opencv env
+# <!---https://blog.csdn.net/computerme/article/details/52986413--->
+INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include
+INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include/opencv4
+INCLUDEPATH += /usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2
+LIBS += -L/usr/local/lib \
+ -lopencv_core \
+ -lopencv_highgui \
+ -lopencv_imgproc \
+ -lopencv_imgcodecs \

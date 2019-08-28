@@ -112,6 +112,7 @@ Rectangle {
                 onMenuButtonIndexBack:
                 {
         //            qDebug("clicked");
+//                    imageItem.openImage();
                     imageItem.openImage();
         //            imageItem.processImage();
                 }

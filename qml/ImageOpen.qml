@@ -9,8 +9,8 @@ Rectangle{
     width: parent.width / 2-70;
     ImageProItem{
         id:imageItem
-
     }
+
     Image   //显示图片
     {
         id: imgRes;
@@ -19,10 +19,8 @@ Rectangle{
         width: parent.width;
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top :parent.top
-        source: "image://colors/hello"
+        source: "image://imgProvider/img"
     }
-
-
 
     Timer
     {
@@ -32,7 +30,7 @@ Rectangle{
         onTriggered:
         {
             imgRes.source = "";
-            imgRes.source = "image://colors/hello"
+            imgRes.source = "image://imgProvider/img"
 //            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<Fresh");
 //            imageItem.processImage();
 //            console.log("---------------------------Fresh");

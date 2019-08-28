@@ -4,7 +4,7 @@ Rectangle {
 
     id: leftToolBar;   //左侧工具栏
 
-    Column   //右边工具栏列表
+    Column   //左边工具栏列表
     {
         id: left_cToolButtonList;
 
