@@ -13,9 +13,11 @@
 #include "opencv2/imgcodecs.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
-#include <iostream>
+#include <opencv2/imgproc/types_c.h>
 using namespace std;
 using namespace cv;
+
+#include <iostream>
 
 typedef struct MyLine{
     QPoint startPnt;
@@ -68,6 +70,7 @@ public:
 
     //--------------grabCut----------------
     Q_INVOKABLE QImage startSeg();
+    Q_INVOKABLE vector<cv::Point> getRecPoint();
     Q_INVOKABLE void setRectInMask(cv::Mat);
 
 signals:

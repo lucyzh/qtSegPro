@@ -70,13 +70,14 @@ Window {
             {
                 console.log("painting")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                imageItem.recrealtimeshow()
+//                imageItem.recrealtimeshow()
             }
             onReleased:
             {
                 console.log("ready2finsihrecpaint")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.recpaint()
+//                imageItem.getRecPoint();
             }
 
         }
