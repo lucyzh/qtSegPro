@@ -46,7 +46,6 @@ public:
             }else {
                 img = imageGlobal;
             }
-
         }
         else if (id == "seg") {
             img = imageSeg;

@@ -17,11 +17,6 @@ Rectangle {    //右侧工具栏
         source: "images/Main/Functional dividing line_@2x.png";
     }
 
-    ImageProItem{
-        id:imageSeg
-    }
-
-
 //    Row
 //    {
 //        id: row_cToolButtonList;
@@ -185,10 +180,9 @@ Rectangle {    //右侧工具栏
             nTextSize: 7;
             nIndex: 0;
             onCToolButtonIndexBack: {
-
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-              imageSeg.startSeg()
+              imageItem.startSeg()
             }
         }
         CommonToolButton

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ImageProcess_t {
-    QByteArrayData data[19];
-    char stringdata0[191];
+    QByteArrayData data[25];
+    char stringdata0[264];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -46,19 +46,27 @@ QT_MOC_LITERAL(10, 86, 1), // "y"
 QT_MOC_LITERAL(11, 88, 15), // "recrealtimeshow"
 QT_MOC_LITERAL(12, 104, 8), // "pntpaint"
 QT_MOC_LITERAL(13, 113, 16), // "pntpaintingstart"
-QT_MOC_LITERAL(14, 130, 8), // "startSeg"
-QT_MOC_LITERAL(15, 139, 11), // "getRecPoint"
-QT_MOC_LITERAL(16, 151, 17), // "vector<cv::Point>"
-QT_MOC_LITERAL(17, 169, 13), // "setRectInMask"
-QT_MOC_LITERAL(18, 183, 7) // "cv::Mat"
+QT_MOC_LITERAL(14, 130, 13), // "getModelParam"
+QT_MOC_LITERAL(15, 144, 8), // "startSeg"
+QT_MOC_LITERAL(16, 153, 11), // "initialRect"
+QT_MOC_LITERAL(17, 165, 11), // "getRecPoint"
+QT_MOC_LITERAL(18, 177, 17), // "vector<cv::Point>"
+QT_MOC_LITERAL(19, 195, 13), // "setRectInMask"
+QT_MOC_LITERAL(20, 209, 7), // "cv::Mat"
+QT_MOC_LITERAL(21, 217, 21), // "convertQPoint2cvPoint"
+QT_MOC_LITERAL(22, 239, 9), // "cv::Point"
+QT_MOC_LITERAL(23, 249, 5), // "reset"
+QT_MOC_LITERAL(24, 255, 8) // "nextIter"
 
     },
     "ImageProcess\0openImage\0\0processImage\0"
     "recpaint\0setStartPnt\0e\0setEndPnt\0"
     "getqmlmessage\0x\0y\0recrealtimeshow\0"
-    "pntpaint\0pntpaintingstart\0startSeg\0"
-    "getRecPoint\0vector<cv::Point>\0"
-    "setRectInMask\0cv::Mat"
+    "pntpaint\0pntpaintingstart\0getModelParam\0"
+    "startSeg\0initialRect\0getRecPoint\0"
+    "vector<cv::Point>\0setRectInMask\0cv::Mat\0"
+    "convertQPoint2cvPoint\0cv::Point\0reset\0"
+    "nextIter"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +76,7 @@ static const uint qt_meta_data_ImageProcess[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      17,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -76,18 +84,23 @@ static const uint qt_meta_data_ImageProcess[] = {
        0,       // signalCount
 
  // methods: name, argc, parameters, tag, flags
-       1,    0,   74,    2, 0x02 /* Public */,
-       3,    0,   75,    2, 0x02 /* Public */,
-       4,    0,   76,    2, 0x02 /* Public */,
-       5,    1,   77,    2, 0x02 /* Public */,
-       7,    1,   80,    2, 0x02 /* Public */,
-       8,    2,   83,    2, 0x02 /* Public */,
-      11,    0,   88,    2, 0x02 /* Public */,
-      12,    0,   89,    2, 0x02 /* Public */,
-      13,    0,   90,    2, 0x02 /* Public */,
-      14,    0,   91,    2, 0x02 /* Public */,
-      15,    0,   92,    2, 0x02 /* Public */,
-      17,    1,   93,    2, 0x02 /* Public */,
+       1,    0,   99,    2, 0x02 /* Public */,
+       3,    0,  100,    2, 0x02 /* Public */,
+       4,    0,  101,    2, 0x02 /* Public */,
+       5,    1,  102,    2, 0x02 /* Public */,
+       7,    1,  105,    2, 0x02 /* Public */,
+       8,    2,  108,    2, 0x02 /* Public */,
+      11,    0,  113,    2, 0x02 /* Public */,
+      12,    0,  114,    2, 0x02 /* Public */,
+      13,    0,  115,    2, 0x02 /* Public */,
+      14,    1,  116,    2, 0x02 /* Public */,
+      15,    0,  119,    2, 0x02 /* Public */,
+      16,    0,  120,    2, 0x02 /* Public */,
+      17,    0,  121,    2, 0x02 /* Public */,
+      19,    1,  122,    2, 0x02 /* Public */,
+      21,    1,  125,    2, 0x02 /* Public */,
+      23,    0,  128,    2, 0x02 /* Public */,
+      24,    0,  129,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QImage,
@@ -99,9 +112,14 @@ static const uint qt_meta_data_ImageProcess[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    2,
     QMetaType::QImage,
-    0x80000000 | 16,
-    QMetaType::Void, 0x80000000 | 18,    2,
+    QMetaType::Void,
+    0x80000000 | 18,
+    QMetaType::Void, 0x80000000 | 20,    2,
+    0x80000000 | 22, QMetaType::QPoint,    2,
+    QMetaType::Void,
+    QMetaType::Int,
 
        0        // eod
 };
@@ -124,11 +142,18 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 6: _t->recrealtimeshow(); break;
         case 7: _t->pntpaint(); break;
         case 8: _t->pntpaintingstart(); break;
-        case 9: { QImage _r = _t->startSeg();
+        case 9: _t->getModelParam((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 10: { QImage _r = _t->startSeg();
             if (_a[0]) *reinterpret_cast< QImage*>(_a[0]) = std::move(_r); }  break;
-        case 10: { vector<cv::Point> _r = _t->getRecPoint();
+        case 11: _t->initialRect(); break;
+        case 12: { vector<cv::Point> _r = _t->getRecPoint();
             if (_a[0]) *reinterpret_cast< vector<cv::Point>*>(_a[0]) = std::move(_r); }  break;
-        case 11: _t->setRectInMask((*reinterpret_cast< cv::Mat(*)>(_a[1]))); break;
+        case 13: _t->setRectInMask((*reinterpret_cast< cv::Mat(*)>(_a[1]))); break;
+        case 14: { cv::Point _r = _t->convertQPoint2cvPoint((*reinterpret_cast< QPoint(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< cv::Point*>(_a[0]) = std::move(_r); }  break;
+        case 15: _t->reset(); break;
+        case 16: { int _r = _t->nextIter();
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -163,13 +188,13 @@ int ImageProcess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 17)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 17;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 17)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 17;
     }
     return _id;
 }

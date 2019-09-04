@@ -23,6 +23,8 @@ extern QPoint recStarPoint;
 extern QPoint recEndPoint;
 extern vector<cv::Point> recpoints;
 
+extern int iterCount;
+
 
 
 

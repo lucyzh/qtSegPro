@@ -65,19 +65,18 @@ Window {
                 imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
                 console.log("ready2paintrec")
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.initialRect();
             }
             onPressAndHold:
             {
                 console.log("painting")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-//                imageItem.recrealtimeshow()
             }
             onReleased:
             {
                 console.log("ready2finsihrecpaint")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.recpaint()
-//                imageItem.getRecPoint();
             }
 
         }
@@ -110,7 +109,6 @@ Window {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.pntpaintingstart()
-//                imageItem.startpntpaint()
             }
             onPositionChanged:
             {

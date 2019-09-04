@@ -1,8 +1,13 @@
 import QtQuick 2.0
+import Imagepro 1.1
 
 Rectangle{  //参数1
     id: parameterRect;
     color: "transparent";
+
+//    ImageProItem{
+//        id:imageItem
+//    }
 
     Text {
         id: menuButtonText;
@@ -15,7 +20,6 @@ Rectangle{  //参数1
         font.family: "微软雅黑";
         font.pixelSize: 15;
         font.letterSpacing: 1;
-//        font.bold: true;
         text: "参数1: ";
     }
     Rectangle{
@@ -74,18 +78,21 @@ Rectangle{  //参数1
         //mouseSelectionMode: TextInput.SelectWords      //一个单词为单位选择
         selectedTextColor: "black" //设置选择文本的字体颜色
         selectionColor: "white"    //设置选择框的颜色
-        text:"0.5" //输入文本默认显示的，可以修改和增加
+        text:"2" //输入文本默认显示的，可以修改和增加
         onAccepted: console.log("accepted") //当按下回车键触发该信号
         //需要注意的是当设置了验证器validator或者掩码inputMask时，只有在输入被接受的情况下才能触发
         //validator: IntValidator{bottom: 5;top:120}
-        //只接受5-120之内的值，当输入为4按回车时没有触发onAccepted。
-                    validator: DoubleValidator{
-                        bottom: 0.0
-                        top:1.0
-                        decimals: 1 //保留小数点位数
-                        //notation: DoubleValidator.StandardNotation
-                        //notation: DoubleValidator.ScientificNotation
-                    }
+        //只接受1-20之内的整数
+        validator: DoubleValidator{
+            bottom: 0.0
+            top:1.0
+            decimals: 0 //保留小数点位数
+            //notation: DoubleValidator.StandardNotation
+            //notation: DoubleValidator.ScientificNotation
+        }
+        onTextChanged: {
+            imageItem.getModelParam(parameterone.text);
+        }
     }
 }
     Image    //增加按钮

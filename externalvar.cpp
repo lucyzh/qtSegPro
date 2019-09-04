@@ -8,3 +8,5 @@ Rect rect;
 QPoint recStarPoint;
 QPoint recEndPoint;
 vector<cv::Point> recpoints;
+
+int iterCount;

@@ -87,7 +87,7 @@ Rectangle {
             sNormalImage: "images/Main/brush_@2x.png";
             sHoverImage: "images/Main/brush2_@2x.png";
             state: "normal";
-            sTextText: "画笔工具";
+            sTextText: "标记前景";
             nTextSize: 7;
             nIndex: 1;
             MouseArea
@@ -107,7 +107,6 @@ Rectangle {
 
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
-
             }
         }
         CommonToolButton
@@ -115,11 +114,11 @@ Rectangle {
             id:tagTool;
             width: 70;
             height: 54;
-            sPressedImage: "images/Main/background2_@2x.png";
-            sNormalImage: "images/Main/background1_@2x.png";
-            sHoverImage: "images/Main/background2_@2x.png";
+            sPressedImage: "images/Main/brush2_@2x.png";
+            sNormalImage: "images/Main/brush_@2x.png";
+            sHoverImage: "images/Main/brush2_@2x.png";
             state: "normal";
-            sTextText: "标记工具";
+            sTextText: "标记背景";
             nTextSize: 7;
             nIndex: 2;
             onCToolButtonIndexBack: {

@@ -144,6 +144,11 @@ void ImageProcess::pntpaintingstart()
 //      isPressed = true;
 //      update();
 //}
+void ImageProcess::initialRect()
+{
+    cv::Point p = convertQPoint2cvPoint(recStarPoint);
+    cv::Rect rect(p.x, p.y, 1, 1);
+}
 
 QImage ImageProcess::startSeg()
 {
@@ -163,7 +168,7 @@ QImage ImageProcess::startSeg()
     mask.create(img.size(), CV_8UC1);
 
     cv::Rect rect(star.x, star.y, end.x-star.x, end.y-star.y);
-    cv::grabCut(img, mask,rect,bgmodel,fgmodel,/*iteration*/1,GC_INIT_WITH_RECT);
+    cv::grabCut(img, mask,rect,bgmodel,fgmodel,iterCount,GC_INIT_WITH_RECT);
     cv::compare(mask,cv::GC_PR_FGD, mask, cv::CMP_EQ);
     cv::Mat fgd(img.size(), CV_8UC3, cv::Scalar(255,255,255));
     img.copyTo(fgd, mask);
@@ -172,27 +177,87 @@ QImage ImageProcess::startSeg()
     return imageSeg;
 }
 
+int ImageProcess::nextIter()
+{
+    cv::Mat ori = QImage2cvMat(imageGlobal,true,false);
+    cv::Mat img;
+    if(ori.type()==CV_8UC4){
+        cvtColor(ori,img,CV_BGRA2BGR);
+    }
+    else if (ori.type()/8==CV_8UC3) {
+        ori.copyTo(img);
+    }
+
+    if (isInitialized)
+    {
+        cv::grabCut(img,mask, rect, bgmodel, fgmodel, 1);
+    }
+    else {
+        if(rectState != SET){
+            return iterCount;
+        }
+        if(lblsState == SET || prLblsState == SET){
+            grabCut(img,mask,rect,bgmodel,fgmodel,1,GC_INIT_WITH_MASK);
+        }
+        else {
+            grabCut(img, mask, rect, bgmodel, fgmodel, 1, GC_INIT_WITH_RECT);
+        }
+        isInitialized = true;
+    }
+    iterCount++;
+    bgdPxls.clear(); fgdPxls.clear();
+    prBgdPxls.clear(); prFgdPxls.clear();
+
+    return iterCount;
+}
+
+cv::Point ImageProcess::convertQPoint2cvPoint(QPoint qPoint)
+{
+    vector<cv::Point> vecpoint;
+    cv::Point cvPot(qPoint.x(), qPoint.y());
+    return cvPot;
+}
+
+void ImageProcess::reset()
+{
+    if(!mask.empty()){
+        mask.setTo(Scalar::all(GC_BGD));
+    }
+    bgdPxls.clear(); fgdPxls.clear();
+    prBgdPxls.clear(); prFgdPxls.clear();
+    isInitialized = false;
+    rectState = NOT_SET;
+    lblsState = NOT_SET;
+    prLblsState = NOT_SET;
+}
+
 vector<cv::Point> ImageProcess::getRecPoint()
 {
     vector<cv::Point> vecpoints;
-    cv::Point recPoint1(recStarPoint.x(), recStarPoint.y());
-    cv::Point recPoint2(recEndPoint.x(), recEndPoint.y());
-    qDebug() << "p1.x(): " << recPoint1.x << endl;
-    qDebug() << "p2.x(): " << recPoint1.x << endl;
+    cv::Point recPoint1 = convertQPoint2cvPoint(recStarPoint);
+    cv::Point recPoint2 = convertQPoint2cvPoint(recEndPoint);
     vecpoints.push_back(recPoint1);
     vecpoints.push_back(recPoint2);
     return vecpoints;
 }
 
-
-void ImageProcess::setRectInMask(Mat img)
+void ImageProcess::getModelParam(QString param)
 {
-//    vector<cv::Point> vecpoints = getRecPoint();
-//    cv::Point star = vecpoints[0];
-//    cv::Point end = vecpoints[1];
-//    mask.create(img.size(), CV_8UC1);
-//    rect = Rect(star, end);
+    iterCount = param.toInt();
+}
 
-//    rectangle(img, star, end, Scalar(0,255,0),1);
+void ImageProcess::setRectInMask(cv::Mat img)
+{
+    CV_Assert(!mask.empty());
+    mask.setTo(GC_BGD);
+    vector<cv::Point> vecpoints = getRecPoint();
+    cv::Point star = vecpoints[0];
+    cv::Point end = vecpoints[1];
+
+    rect.x = max(0, rect.x);
+    rect.y = max(0, rect.y);
+    rect.width = min(rect.width, img.cols-rect.x);
+    rect.height = min(rect.height, img.rows-rect.y);
+    (mask(rect)).setTo(Scalar(GC_PR_FGD));
 }
 
