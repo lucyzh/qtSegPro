@@ -47,9 +47,12 @@ public:
 
     bool isInitialized;
     enum {NOT_SET = 0, IN_PROGRESS = 1, SET = 2};
+    static const int radius = 2;
+    static const int thickness = -1;
     uchar rectState, lblsState, prLblsState;
     vector<cv::Point> fgdPxls, bgdPxls, prFgdPxls, prBgdPxls;
     Rect rect;
+    const Mat* image;
 
     int qmlwidth;
     int qmlheight;
@@ -79,9 +82,18 @@ public:
     Q_INVOKABLE void initialRect();
     Q_INVOKABLE vector<cv::Point> getRecPoint();
     Q_INVOKABLE void setRectInMask(cv::Mat);
+    Q_INVOKABLE void setfgInMask(Point p);
+    Q_INVOKABLE void setbgInMask(Point p);
     Q_INVOKABLE cv::Point convertQPoint2cvPoint(QPoint);
     Q_INVOKABLE void reset();
     Q_INVOKABLE int nextIter();
+    Q_INVOKABLE void showImage() const;
+    Q_INVOKABLE int updateIterCount();
+
+    Q_INVOKABLE QImage startSeg1();
+
+    //------------static methods---------------
+    Q_INVOKABLE static void getBinMask(const Mat& comMask, Mat& binMask);
 
 
 signals:

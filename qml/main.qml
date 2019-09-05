@@ -63,72 +63,45 @@ Window {
             onPressed:
             {
                 imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
-                console.log("ready2paintrec")
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.initialRect();
             }
             onPressAndHold:
             {
-                console.log("painting")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
             }
             onReleased:
             {
-                console.log("ready2finsihrecpaint")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                //矩形显示在界面上
                 imageItem.recpaint()
             }
 
         }
 
-
-
         MouseArea
         {
-//            Timer
-//            {
-//                id: timerforpntpaint
-//                interval: 1;
-//                running: false
-//                repeat: true
-//                onTriggered: {
-//                    console.log("painting")
-//                    imageItem.setStartPnt(Qt.point(mouseX,mouseY))
-//                    imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-//                    imageItem.pntpainting()
-//                }
-//            }
-
             id:maforpaintingpnt
             visible:  false
             anchors.fill:  parent
             onPressed:
             {
                 imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
-                console.log("ready2paintpnt")
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.pntpaintingstart()
             }
             onPositionChanged:
             {
-                console.log("painting")
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.pntpaint()
+                imageItem.setfgInMask(Qt.point(mouseX, mouseY))
             }
-//            onPressAndHold:
-//            {
-//                console.log("its onPressAndHold")
-
-//                timerforpntpaint.running = true
-//            }
             onReleased:
             {
                 timerforpntpaint.running = false
-                console.log("ready2finsihpntpaint")
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-//                imageItem.recpaint()
             }
 
         }

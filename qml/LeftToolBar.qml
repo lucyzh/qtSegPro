@@ -96,11 +96,9 @@ Rectangle {
                 anchors.fill: parent
                 onClicked:
                 {
-                    console.log("click ready to use brush")
-                   // menuAllMouseArea.visible = false
+
                     maforpaintingrec.visible = false
                     maforpaintingpnt.visible = true
-                    //allMouseArea.visible = false
                 }
             }
             onCToolButtonIndexBack: {

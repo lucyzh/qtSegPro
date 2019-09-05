@@ -25,7 +25,13 @@ extern vector<cv::Point> recpoints;
 
 extern int iterCount;
 
+extern const Scalar RED;
+extern const Scalar PINK;
+extern const Scalar BLUE;
+extern const Scalar LIGHTBLUE;
+extern const Scalar GREEN;
 
-
+extern bool BGD_BTN;
+extern bool FGD_BTN;
 
 #endif // EXTERNALVAR_H

@@ -32,8 +32,8 @@ Rectangle{  //参数1
 
     TextInput{
         id:parameterone;
-        width: parent.width;
-        height: parent.height;
+        width: 80;
+        height: 30;
         //anchors.centerIn: parent
         color: "black"
         font.pixelSize: 15
@@ -77,8 +77,8 @@ Rectangle{  //参数1
         //mouseSelectionMode: TextInput.SelectCharacters //一个字符为单位选择，默认
         //mouseSelectionMode: TextInput.SelectWords      //一个单词为单位选择
         selectedTextColor: "black" //设置选择文本的字体颜色
-        selectionColor: "white"    //设置选择框的颜色
-        text:"2" //输入文本默认显示的，可以修改和增加
+        selectionColor: "#00ccdd"    //设置选择框的颜色
+        text:"12" //输入文本默认显示的，可以修改和增加
         onAccepted: console.log("accepted") //当按下回车键触发该信号
         //需要注意的是当设置了验证器validator或者掩码inputMask时，只有在输入被接受的情况下才能触发
         //validator: IntValidator{bottom: 5;top:120}
