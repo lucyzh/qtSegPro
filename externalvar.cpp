@@ -17,11 +17,12 @@ Rect rect;
 QPoint recStarPoint;
 QPoint recEndPoint;
 vector<cv::Point> recpoints;
+vector<cv::Point> fgPxls;
+vector<cv::Point> bgPxls;
+vector<cv::Point> fgdPxls, bgdPxls, prFgdPxls, prBgdPxls;
+const Mat* image;
 
 int iterCount;
-
-const int BGD_KEY = EVENT_FLAG_CTRLKEY;
-const int FGD_KEY = EVENT_FLAG_SHIFTKEY;
 
 const Scalar RED = Scalar(0,0,255);
 const Scalar PINK = Scalar(230,130,255);

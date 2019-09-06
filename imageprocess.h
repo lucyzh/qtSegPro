@@ -42,7 +42,7 @@ public:
     int imageheight;
 
     //------------------grabCut params-------------
-    Mat mask,bgmodel, fgmodel;
+    Mat bgmodel, fgmodel;
     QString fileName;
 
     bool isInitialized;
@@ -50,9 +50,7 @@ public:
     static const int radius = 2;
     static const int thickness = -1;
     uchar rectState, lblsState, prLblsState;
-    vector<cv::Point> fgdPxls, bgdPxls, prFgdPxls, prBgdPxls;
-    Rect rect;
-    const Mat* image;
+
 
     int qmlwidth;
     int qmlheight;
@@ -70,6 +68,8 @@ public:
     Q_INVOKABLE QImage recpaint();
     Q_INVOKABLE void setStartPnt(QPoint e);
     Q_INVOKABLE void setEndPnt(QPoint e);
+    Q_INVOKABLE void setRecStartPnt(QPoint);
+    Q_INVOKABLE void setRectEndPnt(QPoint);
     Q_INVOKABLE void getqmlmessage(int x , int y);
     Q_INVOKABLE void recrealtimeshow();
     Q_INVOKABLE void pntpaint();
@@ -81,16 +81,24 @@ public:
     Q_INVOKABLE QImage startSeg();
     Q_INVOKABLE void initialRect();
     Q_INVOKABLE vector<cv::Point> getRecPoint();
-    Q_INVOKABLE void setRectInMask(cv::Mat);
-    Q_INVOKABLE void setfgInMask(Point p);
-    Q_INVOKABLE void setbgInMask(Point p);
+    Q_INVOKABLE void setRectInMask();
+    Q_INVOKABLE void setfgInMask();
+    Q_INVOKABLE void setbgInMask();
     Q_INVOKABLE cv::Point convertQPoint2cvPoint(QPoint);
     Q_INVOKABLE void reset();
     Q_INVOKABLE int nextIter();
     Q_INVOKABLE void showImage() const;
     Q_INVOKABLE int updateIterCount();
 
-    Q_INVOKABLE QImage startSeg1();
+    Q_INVOKABLE void startSeg1();
+    Q_INVOKABLE void getfgPxls();
+    Q_INVOKABLE vector<Point> getbgPxls();
+    Q_INVOKABLE void setImage(const Mat& _image);
+
+    //-------------State Change Methods---------------
+    //...先不判空，实现最基本的功能
+
+
 
     //------------static methods---------------
     Q_INVOKABLE static void getBinMask(const Mat& comMask, Mat& binMask);

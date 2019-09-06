@@ -64,17 +64,19 @@ Window {
             {
                 imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
-                imageItem.initialRect();
+                imageItem.setRecStartPnt(Qt.point(mouseX,mouseY))
             }
             onPressAndHold:
             {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.setRectEndPnt()(Qt.point(mouseX,mouseY))
             }
             onReleased:
             {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 //矩形显示在界面上
                 imageItem.recpaint()
+                imageItem.setRectEndPnt(Qt.point(mouseX,mouseY))
             }
 
         }
@@ -96,7 +98,34 @@ Window {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.pntpaint()
-                imageItem.setfgInMask(Qt.point(mouseX, mouseY))
+
+            }
+            onReleased:
+            {
+                //timerforpntpaint.running = false
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.getfgPxls()
+            }
+        }
+
+        MouseArea
+        {
+            id:mabgpaintingpnt
+            visible:  false
+            anchors.fill:  parent
+            onPressed:
+            {
+                imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
+                imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaintingstart()
+            }
+            onPositionChanged:
+            {
+                imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaint()
+                imageItem.getbgPxls();
             }
             onReleased:
             {
@@ -105,6 +134,7 @@ Window {
             }
 
         }
+
     }
     SegResultRect
     {  //  分割结果显示区域

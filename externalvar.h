@@ -18,10 +18,14 @@ extern QImage imageGlobal;
 extern QImage imageSeg;
 
 extern cv::Mat mask;
-extern Rect rect;
 extern QPoint recStarPoint;
 extern QPoint recEndPoint;
 extern vector<cv::Point> recpoints;
+extern vector<cv::Point> fgPxls;
+extern vector<cv::Point> bgPxls;
+extern vector<cv::Point> fgdPxls, bgdPxls, prFgdPxls, prBgdPxls;
+extern Rect rect;
+extern const Mat* image;
 
 extern int iterCount;
 

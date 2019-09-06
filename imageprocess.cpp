@@ -81,31 +81,43 @@ QImage ImageProcess::recpaint()
     painter.drawLine(startPnt,point2);
     painter.drawLine(point1,endPnt);
     painter.drawLine(point2,endPnt);
-    qDebug()<<"imageResimageResimageResimageRes+++++++++++++++"<<imageRes;
-    qDebug("processed");
     return imageGlobal;
 }
 
 void ImageProcess::setStartPnt(QPoint e)
 {
-    qDebug() << "starte" << e.x()<< "   " << e.y()<<endl;
     startPnt.setX(e.x() * imagewidth/qmlwidth);
-    startPnt.setY(e.y()* imageheight/(qmlheight*0.8) );
-    recStarPoint = startPnt;
+    startPnt.setY(e.y() * imageheight/(qmlheight*0.8) );
 }
 
 void ImageProcess::setEndPnt(QPoint e)
 {
     endPnt.setX(e.x() * imagewidth/qmlwidth);
     endPnt.setY(e.y() * imageheight/(qmlheight*0.8) );
-    recEndPoint = endPnt;
+    qDebug() << "e.x: " << e.x() << endl;
+    qDebug() << "endPnt.x: " << endPnt.x() << endl;
+    qDebug() << "**************" << endl;
+    qDebug() << "e.y: " << e.y() << endl;
+    qDebug() << "endPnt.y: " << endPnt.y() << endl;
 }
+
+void ImageProcess::setRecStartPnt(QPoint e)
+{
+    recStarPoint.setX(e.x());
+    recStarPoint.setY(e.y());
+}
+
+void ImageProcess::setRectEndPnt(QPoint e)
+{
+    recEndPoint.setX(e.x());
+    recEndPoint.setY(e.y());
+}
+
 void ImageProcess::getqmlmessage(int x, int y)
 {
 
     qmlwidth = x ;
     qmlheight = y ;
-    qDebug() << "qmlmess" << qmlwidth<< "   " <<qmlheight <<endl;
 }
 
 void  ImageProcess::recrealtimeshow()
@@ -119,7 +131,7 @@ void  ImageProcess::pntpaint()
     QPen pen;
     qDebug() << "startpnt" << startPnt.x()<< "   " << startPnt.y()<<endl;
     qDebug() << "endpnt" << endPnt.x() << "   "<< endPnt.y() << endl;
-    pen.setColor(Qt::red);
+    pen.setColor(Qt::blue);
     pen.setWidth(4);
     painter.setPen(pen);
     painter.drawLine(points[points.size()-1]->startPnt,endPnt);
@@ -137,14 +149,7 @@ void ImageProcess::pntpaintingstart()
     point->endPnt = endPnt;
     points.push_back(point);
 }
-//void ImageProcess::mousePressEvent(QMouseEvent *e)
-//{
 
-//      startPnt = e->pos();
-//      endPnt = e->pos();
-//      isPressed = true;
-//      update();
-//}
 void ImageProcess::initialRect()
 {
     cv::Point p = convertQPoint2cvPoint(recStarPoint);
@@ -162,20 +167,44 @@ void ImageProcess::getBinMask(const Mat &comMask, Mat &binMask)
     binMask = comMask & 1;
 }
 
-void ImageProcess::setfgInMask(Point p)
+
+
+void ImageProcess::getfgPxls()
 {
-    vector<Point> *fpxls;
-    fpxls = &fgdPxls;
-    fpxls->push_back(p);
-    circle(mask, p, radius, GC_FGD, thickness);
+    for(int i=0;i<points.length();i++){
+        cv::Point pnStart = convertQPoint2cvPoint(points[i]->startPnt);
+        cv::Point pnEnd = convertQPoint2cvPoint(points[i]->endPnt);
+        fgdPxls.push_back(pnStart);
+        fgdPxls.push_back(pnEnd);
+    }
+    qDebug() << "fgdPxls: " << fgdPxls.size() << endl;
 }
 
-void ImageProcess::setbgInMask(Point p)
+void ImageProcess::setfgInMask()
 {
-    vector<Point> *bpxls;
-    bpxls = &bgdPxls;
-    bpxls->push_back(p);
-    circle(mask, p, radius, GC_BGD, thickness);
+    qDebug() << "actual fgdPxls: " << fgdPxls.size() << endl;
+    vector<Point>::iterator it;
+    for(it=fgdPxls.begin();it!=fgdPxls.end();++it)
+        circle(mask, *it, radius, GC_FGD, thickness);
+}
+
+vector<Point> ImageProcess::getbgPxls()
+{
+    for(int i=0;i<points.length();i++){
+        cv::Point pnStart = convertQPoint2cvPoint(points[i]->startPnt);
+        cv::Point pnEnd = convertQPoint2cvPoint(points[i]->endPnt);
+        bgdPxls.push_back(pnStart);
+        bgdPxls.push_back(pnEnd);
+    }
+
+    return bgdPxls;
+}
+
+void ImageProcess::setbgInMask()
+{
+    vector<Point>::iterator it;
+    for(it=bgdPxls.begin();it!=bgdPxls.end();++it)
+        circle(mask, *it, radius, GC_BGD, thickness);
 }
 
 void ImageProcess::showImage() const{
@@ -190,39 +219,55 @@ void ImageProcess::showImage() const{
         image->copyTo(res,binMask);
     }
     vector<Point>::const_iterator it;
-    for(it = bgdPxls.begin(); it != bgdPxls.end(); ++it)
+
+    qDebug() << "inside showImage bgdPxls: " << bgdPxls.size() << endl;
+
+    for(it = bgdPxls.begin(); it != bgdPxls.end(); ++it){
+        qDebug() << "bgdPxls ......" << endl;
         circle(res, *it, radius, BLUE, thickness);
+    }
+
     for(it = fgdPxls.begin(); it != fgdPxls.end(); ++it)
         circle(res, *it, radius, RED, thickness);
     for(it = prFgdPxls.begin(); it != prFgdPxls.end(); ++it)
         circle(res, *it, radius, LIGHTBLUE, thickness);
     for(it = prFgdPxls.begin(); it != prFgdPxls.end(); ++it)
         circle(res, *it, radius, PINK, thickness);
-    if(rectState == IN_PROGRESS || rectState == SET)
-        rectangle(res, Point(rect.x, rect.y), Point(rect.x + rect.width, rect.y + rect.height), GREEN, 1);
+    //if(rectState == IN_PROGRESS || rectState == SET)
+    rectangle(res, Point(rect.x, rect.y), Point(rect.x + rect.width, rect.y + rect.height), GREEN, 1);
     imageSeg = QImage((uchar*) res.data, res.cols, res.rows, res.step, QImage::Format_RGB888);
 }
 
-void ImageProcess::setRectInMask(cv::Mat img)
+void ImageProcess::setRectInMask()
 {
     vector<cv::Point> vecpoints = getRecPoint();
     cv::Point star = vecpoints[0];
     cv::Point end = vecpoints[1];
 
+    qDebug() << "star.x: " << star.x << "end.x: " << end.x << endl;
+    qDebug() << "star.y: " << star.y << "end.y: " << end.y << endl;
+
     //cv::Rect rect(star.x, star.y, end.x-star.x, end.y-star.y);
 
     rect.x = max(0, star.x);
     rect.y = max(0, star.y);
-    rect.width = min(end.x-star.x, img.cols-star.x);
-    rect.height = min(end.y-star.y, img.rows-star.y);
+    rect.width = min(end.x-star.x, image->cols-star.x);
+    rect.height = min(end.y-star.y, image->rows-star.y);
 
-    mask.create(img.size(), CV_8UC1);
+    qDebug() << "inside setRectInMask rect.width: " << rect.width << ", rect.height: " << rect.height << endl;
+
+    mask.create(image->size(), CV_8UC1);
     CV_Assert(!mask.empty());
     mask.setTo(GC_BGD);
     (mask(rect)).setTo(Scalar(GC_PR_FGD));
 }
 
-QImage ImageProcess::startSeg1()
+void ImageProcess::setImage(const Mat &_image)
+{
+    image = &_image;
+}
+
+void ImageProcess::startSeg1()
 {
     cv::Mat ori = QImage2cvMat(imageGlobal,true,false);
     cv::Mat img;
@@ -232,15 +277,22 @@ QImage ImageProcess::startSeg1()
     else if (ori.type()/8==CV_8UC3) {
         ori.copyTo(img);
     }
-    setRectInMask(img);
-    cv::grabCut(img, mask,rect,bgmodel,fgmodel,3,GC_INIT_WITH_RECT);
+    setImage(img);
+    setRectInMask();
+
+//    setfgInMask();
+//    //setbgInMask();
+
+    cv::grabCut(*image, mask,rect,bgmodel,fgmodel,15,GC_INIT_WITH_RECT);
+//    qDebug() << "inside grabCut rect.width: " << rect.width << ", rect.height: " << rect.height << endl;
+//    showImage();
+
     cv::compare(mask,cv::GC_PR_FGD, mask, cv::CMP_EQ);
-    cv::Mat fgd(img.size(), CV_8UC3, cv::Scalar(255,255,255));
+    cv::Mat fgd(ori.size(), CV_8UC3, cv::Scalar(255,255,255));
     img.copyTo(fgd, mask);
     imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
-    qDebug() << "iterCount: " << iterCount << endl;
     qDebug() << "seg finished!!!" << endl;
-    return imageSeg;
+//    return imageSeg;
 }
 
 QImage ImageProcess::startSeg()
