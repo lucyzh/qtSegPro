@@ -72,7 +72,7 @@ public:
     Q_INVOKABLE void setRectEndPnt(QPoint);
     Q_INVOKABLE void getqmlmessage(int x , int y);
     Q_INVOKABLE void recrealtimeshow();
-    Q_INVOKABLE void pntpaint();
+    Q_INVOKABLE void pntpaint(int);
     Q_INVOKABLE void pntpaintingstart();
 
     Q_INVOKABLE void getModelParam(QString);

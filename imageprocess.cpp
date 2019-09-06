@@ -103,14 +103,14 @@ void ImageProcess::setEndPnt(QPoint e)
 
 void ImageProcess::setRecStartPnt(QPoint e)
 {
-    recStarPoint.setX(e.x());
-    recStarPoint.setY(e.y());
+    recStarPoint.setX(e.x()*imagewidth/qmlwidth);
+    recStarPoint.setY(e.y()*imageheight/(qmlheight*0.8));
 }
 
 void ImageProcess::setRectEndPnt(QPoint e)
 {
-    recEndPoint.setX(e.x());
-    recEndPoint.setY(e.y());
+    recEndPoint.setX(e.x()*imagewidth/qmlwidth);
+    recEndPoint.setY(e.y()*imageheight/(qmlheight*0.8));
 }
 
 void ImageProcess::getqmlmessage(int x, int y)
@@ -125,14 +125,13 @@ void  ImageProcess::recrealtimeshow()
 //    update();
 }
 
-void  ImageProcess::pntpaint()
+void  ImageProcess::pntpaint(int color_flag)
 {
     QPainter painter(&imageGlobal);
     QPen pen;
-    qDebug() << "startpnt" << startPnt.x()<< "   " << startPnt.y()<<endl;
-    qDebug() << "endpnt" << endPnt.x() << "   "<< endPnt.y() << endl;
-    pen.setColor(Qt::blue);
-    pen.setWidth(4);
+    pen.setColor((Qt::GlobalColor)(color_flag));
+    qDebug() << "qt.globalcolor: " << (Qt::GlobalColor)(color_flag) << endl;
+    pen.setWidth(1);
     painter.setPen(pen);
     painter.drawLine(points[points.size()-1]->startPnt,endPnt);
     myLine *point = new myLine;
@@ -177,12 +176,10 @@ void ImageProcess::getfgPxls()
         fgdPxls.push_back(pnStart);
         fgdPxls.push_back(pnEnd);
     }
-    qDebug() << "fgdPxls: " << fgdPxls.size() << endl;
 }
 
 void ImageProcess::setfgInMask()
 {
-    qDebug() << "actual fgdPxls: " << fgdPxls.size() << endl;
     vector<Point>::iterator it;
     for(it=fgdPxls.begin();it!=fgdPxls.end();++it)
         circle(mask, *it, radius, GC_FGD, thickness);
@@ -270,9 +267,10 @@ void ImageProcess::setImage(const Mat &_image)
 void ImageProcess::startSeg1()
 {
     cv::Mat ori = QImage2cvMat(imageGlobal,true,false);
-    cv::Mat img;
+    Mat img;
     if(ori.type()==CV_8UC4){
-        cvtColor(ori,img,CV_BGRA2BGR);
+        cvtColor(ori,img,COLOR_BGRA2RGB);
+        qDebug() << "convert to CV_8UC3" << endl;
     }
     else if (ori.type()/8==CV_8UC3) {
         ori.copyTo(img);
@@ -280,10 +278,10 @@ void ImageProcess::startSeg1()
     setImage(img);
     setRectInMask();
 
-//    setfgInMask();
-//    //setbgInMask();
+    setfgInMask();
+    setbgInMask();
 
-    cv::grabCut(*image, mask,rect,bgmodel,fgmodel,15,GC_INIT_WITH_RECT);
+    cv::grabCut(*image, mask,rect,bgmodel,fgmodel,15,GC_INIT_WITH_MASK);
 //    qDebug() << "inside grabCut rect.width: " << rect.width << ", rect.height: " << rect.height << endl;
 //    showImage();
 

@@ -113,25 +113,25 @@ static const uint qt_meta_data_ImageProcess[] = {
        9,    1,  166,    2, 0x02 /* Public */,
       10,    2,  169,    2, 0x02 /* Public */,
       13,    0,  174,    2, 0x02 /* Public */,
-      14,    0,  175,    2, 0x02 /* Public */,
-      15,    0,  176,    2, 0x02 /* Public */,
-      16,    1,  177,    2, 0x02 /* Public */,
-      17,    0,  180,    2, 0x02 /* Public */,
-      18,    0,  181,    2, 0x02 /* Public */,
-      19,    0,  182,    2, 0x02 /* Public */,
-      21,    0,  183,    2, 0x02 /* Public */,
-      22,    0,  184,    2, 0x02 /* Public */,
-      23,    0,  185,    2, 0x02 /* Public */,
-      24,    1,  186,    2, 0x02 /* Public */,
-      26,    0,  189,    2, 0x02 /* Public */,
-      27,    0,  190,    2, 0x02 /* Public */,
-      28,    0,  191,    2, 0x02 /* Public */,
-      29,    0,  192,    2, 0x02 /* Public */,
-      30,    0,  193,    2, 0x02 /* Public */,
-      31,    0,  194,    2, 0x02 /* Public */,
-      32,    0,  195,    2, 0x02 /* Public */,
-      34,    1,  196,    2, 0x02 /* Public */,
-      37,    2,  199,    2, 0x02 /* Public */,
+      14,    1,  175,    2, 0x02 /* Public */,
+      15,    0,  178,    2, 0x02 /* Public */,
+      16,    1,  179,    2, 0x02 /* Public */,
+      17,    0,  182,    2, 0x02 /* Public */,
+      18,    0,  183,    2, 0x02 /* Public */,
+      19,    0,  184,    2, 0x02 /* Public */,
+      21,    0,  185,    2, 0x02 /* Public */,
+      22,    0,  186,    2, 0x02 /* Public */,
+      23,    0,  187,    2, 0x02 /* Public */,
+      24,    1,  188,    2, 0x02 /* Public */,
+      26,    0,  191,    2, 0x02 /* Public */,
+      27,    0,  192,    2, 0x02 /* Public */,
+      28,    0,  193,    2, 0x02 /* Public */,
+      29,    0,  194,    2, 0x02 /* Public */,
+      30,    0,  195,    2, 0x02 /* Public */,
+      31,    0,  196,    2, 0x02 /* Public */,
+      32,    0,  197,    2, 0x02 /* Public */,
+      34,    1,  198,    2, 0x02 /* Public */,
+      37,    2,  201,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QImage,
@@ -143,7 +143,7 @@ static const uint qt_meta_data_ImageProcess[] = {
     QMetaType::Void, QMetaType::QPoint,    2,
     QMetaType::Void, QMetaType::Int, QMetaType::Int,   11,   12,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    2,
     QMetaType::QImage,
@@ -184,7 +184,7 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 6: _t->setRectEndPnt((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         case 7: _t->getqmlmessage((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 8: _t->recrealtimeshow(); break;
-        case 9: _t->pntpaint(); break;
+        case 9: _t->pntpaint((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 10: _t->pntpaintingstart(); break;
         case 11: _t->getModelParam((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 12: { QImage _r = _t->startSeg();

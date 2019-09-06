@@ -83,6 +83,7 @@ Window {
 
         MouseArea
         {
+            //foreground
             id:maforpaintingpnt
             visible:  false
             anchors.fill:  parent
@@ -97,7 +98,10 @@ Window {
             {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                imageItem.pntpaint()
+                //传入蓝色画笔
+                imageItem.pntpaint(9)
+
+
 
             }
             onReleased:
@@ -110,6 +114,7 @@ Window {
 
         MouseArea
         {
+            //background
             id:mabgpaintingpnt
             visible:  false
             anchors.fill:  parent
@@ -124,13 +129,14 @@ Window {
             {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                imageItem.pntpaint()
-                imageItem.getbgPxls();
+                //传入黄色画笔
+                imageItem.pntpaint(12)
             }
             onReleased:
             {
                 timerforpntpaint.running = false
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.getbgPxls();
             }
 
         }

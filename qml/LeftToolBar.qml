@@ -72,7 +72,7 @@ Rectangle {
                    // menuAllMouseArea.visible = false
                     maforpaintingrec.visible = true
                     maforpaintingpnt.visible = false
-                    //allMouseArea.visible = false
+                    mabgpaintingpnt = false
                 }
             }
 
@@ -99,6 +99,7 @@ Rectangle {
 
                     maforpaintingrec.visible = false
                     maforpaintingpnt.visible = true
+                    mabgpaintingpnt = false
                 }
             }
             onCToolButtonIndexBack: {
@@ -120,15 +121,21 @@ Rectangle {
             nTextSize: 7;
             nIndex: 2;
             onCToolButtonIndexBack: {
-
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
+            }
 
-
+            MouseArea
+            {
+                id : brushtoolbg
+                anchors.fill: parent
+                onClicked:
+                {
+                    maforpaintingrec.visible = false
+                    maforpaintingpnt.visible = false
+                    mabgpaintingpnt.visible = true
+                }
             }
         }
-
-//
-
    }
 }
