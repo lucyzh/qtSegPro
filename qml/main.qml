@@ -98,8 +98,8 @@ Window {
             {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                //传入蓝色画笔
-                imageItem.pntpaint(9)
+                //传入红色画笔
+                imageItem.pntpaint(7)
 
 
 
@@ -129,8 +129,8 @@ Window {
             {
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                //传入黄色画笔
-                imageItem.pntpaint(12)
+                //传入蓝色画笔
+                imageItem.pntpaint(9)
             }
             onReleased:
             {
@@ -160,8 +160,8 @@ Window {
         height: 40;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: parent.height-135;
-        anchors.leftMargin: parent.width/2-250;
+        anchors.topMargin: parent.height-85;
+        anchors.leftMargin: parent.width/2-500;
     }
     ParameterRectTwo{    //第二个参数框
         id: parameterRectTwo;

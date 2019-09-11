@@ -80,6 +80,8 @@ cv::Mat QImage2cvMat(QImage &image, bool clone, bool rb_swap)
         mat = cv::Mat(image.height(), image.width(), CV_8UC1, (void *)image.bits(), image.bytesPerLine());
         if(clone)  mat = mat.clone();
         break;
+    default:
+        break;
     }
     return mat;
 }

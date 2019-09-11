@@ -17,6 +17,7 @@ Rectangle{
         cache: false;
         height: parent.height*0.8;
         width: parent.width;
+        fillMode: Image.PreserveAspectFit;
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top :parent.top
         source: "image://imgProvider/img"
