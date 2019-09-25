@@ -11,6 +11,7 @@ using namespace cv;
 
 QImage imageGlobal;
 QImage imageSeg;
+QImage imageOri;
 
 cv::Mat mask;
 Rect rect;

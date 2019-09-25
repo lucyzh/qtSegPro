@@ -11,7 +11,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # add compile option
 QMAKE_CXXFLAGS += -std=libstdc++
 
-
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
@@ -32,6 +31,10 @@ QML_IMPORT_PATH =
 
 # Additional import path used to resolve QML modules just for Qt Quick Designer
 QML_DESIGNER_IMPORT_PATH =
+
+#macOS version
+QMAKE_MAC_SDK = macosx10.15
+CONFIT+=sdk_no_version_check
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

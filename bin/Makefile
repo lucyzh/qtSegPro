@@ -15,9 +15,9 @@ EQ            = =
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_QUICK_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -std=libstdc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../../ImageProFrameQML-master -I. -I/usr/local/Cellar/opencv/4.0.1/include -I/usr/local/Cellar/opencv/4.0.1/include/opencv4 -I/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2 -I/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtQml.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtNetwork.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/Cellar/qt/5.13.0/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.13.0/lib
+CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -std=libstdc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
+INCPATH       = -I../../ImageProFrameQML-master -I. -I/usr/local/Cellar/opencv/4.0.1/include -I/usr/local/Cellar/opencv/4.0.1/include/opencv4 -I/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2 -I/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtQml.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtNetwork.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AGL.framework/Headers -I/usr/local/Cellar/qt/5.13.0/mkspecs/macx-clang -F/usr/local/Cellar/qt/5.13.0/lib
 QMAKE         = /usr/local/Cellar/qt/5.13.0/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -39,7 +39,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = ImageProFrameQML1.0.0
 DISTDIR = /Users/lucy/Documents/qt/qt_seg_demo/ImageProFrameQML-master/bin/.tmp/ImageProFrameQML1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.12 -Wl,-rpath,@executable_path/../Frameworks
+LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.12 -Wl,-rpath,@executable_path/../Frameworks
 LIBS          = $(SUBLIBS) -F/usr/local/Cellar/qt/5.13.0/lib -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_imgcodecs -framework QtQuick -framework QtWidgets -framework QtGui -framework QtQml -framework QtNetwork -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
@@ -271,8 +271,8 @@ DESTDIR       =
 TARGET        = ImageProFrameQML.app/Contents/MacOS/ImageProFrameQML
 
 ####### Custom Variables
-EXPORT_QMAKE_MAC_SDK = macosx
-EXPORT_QMAKE_MAC_SDK_VERSION = 10.14
+EXPORT_QMAKE_MAC_SDK = macosx10.15
+EXPORT_QMAKE_MAC_SDK_VERSION = 10.15
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
 EXPORT_VALID_ARCHS = x86_64
 EXPORT_ACTIVE_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(ARCHS))
@@ -906,7 +906,7 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/local/Cellar/qt/5.13.0/mkspecs/features/data/dummy.cpp
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -std=libstdc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /usr/local/Cellar/qt/5.13.0/mkspecs/features/data/dummy.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -std=libstdc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.12 -Wall -W -dM -E -o moc_predefs.h /usr/local/Cellar/qt/5.13.0/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_imageprocess.cpp
 compiler_moc_header_clean:
@@ -982,9 +982,12 @@ moc_imageprocess.cpp: ../imageprocess.h \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/highgui.hpp \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/videoio.hpp \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc/types_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/core_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types_c.h \
 		moc_predefs.h \
 		/usr/local/Cellar/qt/5.13.0/bin/moc
-	/usr/local/Cellar/qt/5.13.0/bin/moc $(DEFINES) --include /Users/lucy/Documents/qt/qt_seg_demo/ImageProFrameQML-master/bin/moc_predefs.h -I/usr/local/Cellar/qt/5.13.0/mkspecs/macx-clang -I/Users/lucy/Documents/qt/qt_seg_demo/ImageProFrameQML-master -I/usr/local/Cellar/opencv/4.0.1/include -I/usr/local/Cellar/opencv/4.0.1/include/opencv4 -I/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2 -I/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtQml.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtNetwork.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers -I. -IF:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++ -IF:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/i686-w64-mingw32 -IF:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include/c++/backward -IF:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include -IF:/Qt/Tools/mingw730_32/lib/gcc/i686-w64-mingw32/7.3.0/include-fixed -IF:/Qt/Tools/mingw730_32/i686-w64-mingw32/include -F/usr/local/Cellar/qt/5.13.0/lib ../imageprocess.h -o moc_imageprocess.cpp
+	/usr/local/Cellar/qt/5.13.0/bin/moc $(DEFINES) --include /Users/lucy/Documents/qt/qt_seg_demo/ImageProFrameQML-master/bin/moc_predefs.h -I/usr/local/Cellar/qt/5.13.0/mkspecs/macx-clang -I/Users/lucy/Documents/qt/qt_seg_demo/ImageProFrameQML-master -I/usr/local/Cellar/opencv/4.0.1/include -I/usr/local/Cellar/opencv/4.0.1/include/opencv4 -I/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2 -I/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtWidgets.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtQml.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtNetwork.framework/Headers -I/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/include -F/usr/local/Cellar/qt/5.13.0/lib ../imageprocess.h -o moc_imageprocess.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1133,7 +1136,42 @@ convert.o: ../convert.cpp ../convert.h \
 
 externalvar.o: ../externalvar.cpp ../externalvar.h \
 		/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/QImage \
-		/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/qimage.h
+		/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/qimage.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgcodecs.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvdef.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/cvconfig.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_helper.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/fast_math.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/version.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/base.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/opencv_modules.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/neon_utils.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/vsx_utils.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/check.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/traits.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/matx.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/saturate.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/bufferpool.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.inl.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/persistence.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/operations.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.inl.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/utility.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/optim.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/ovx.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/highgui.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/videoio.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc/types_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/core_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types_c.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o externalvar.o ../externalvar.cpp
 
 imageprocess.o: ../imageprocess.cpp ../imageprocess.h \
@@ -1207,6 +1245,9 @@ imageprocess.o: ../imageprocess.cpp ../imageprocess.h \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/highgui.hpp \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/videoio.hpp \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc/types_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/core_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types_c.h \
 		../externalvar.h \
 		/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/QImage \
 		/usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/qimage.h \
@@ -1327,6 +1368,41 @@ main.o: ../main.cpp /usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/QGui
 		/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers/QDebug \
 		/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers/qdebug.h \
 		../externalvar.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgcodecs.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvdef.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/cvconfig.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_helper.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/fast_math.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/version.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/base.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/opencv_modules.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/neon_utils.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/vsx_utils.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/check.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/traits.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/matx.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/saturate.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/bufferpool.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.inl.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/persistence.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/operations.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.inl.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/utility.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/optim.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/ovx.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/highgui.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/videoio.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc/types_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/core_c.h \
+		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types_c.h \
 		../imageprocess.h \
 		/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers/QObject \
 		/usr/local/Cellar/qt/5.13.0/lib/QtCore.framework/Headers/qobject.h \
@@ -1361,38 +1437,6 @@ main.o: ../main.cpp /usr/local/Cellar/qt/5.13.0/lib/QtGui.framework/Headers/QGui
 		/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers/qsgtextureprovider.h \
 		/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers/qsgvertexcolormaterial.h \
 		/usr/local/Cellar/qt/5.13.0/lib/QtQuick.framework/Headers/qtquickversion.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgcodecs.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvdef.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/cvconfig.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/hal/interface.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cv_cpu_helper.h \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/fast_math.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/version.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/base.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/opencv_modules.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/neon_utils.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/vsx_utils.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/check.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/traits.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/matx.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/saturate.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/types.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/bufferpool.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/mat.inl.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/persistence.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/operations.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/cvstd.inl.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/utility.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/optim.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/core/ovx.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/highgui.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/videoio.hpp \
-		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/imgproc.hpp \
 		../grabCut.h \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/opencv.hpp \
 		/usr/local/Cellar/opencv/4.0.1/include/opencv4/opencv2/calib3d.hpp \

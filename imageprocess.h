@@ -47,7 +47,7 @@ public:
 
     bool isInitialized;
     enum {NOT_SET = 0, IN_PROGRESS = 1, SET = 2};
-    static const int radius = 2;
+    static const int radius = 1;
     static const int thickness = -1;
     uchar rectState, lblsState, prLblsState;
 
@@ -97,7 +97,6 @@ public:
 
     //-------------State Change Methods---------------
     //...先不判空，实现最基本的功能
-
 
 
     //------------static methods---------------
