@@ -88,26 +88,90 @@ QImage ImageProcess::recpaint()
 
 void ImageProcess::setStartPnt(QPoint e)
 {
-    startPnt.setX(e.x() * imagewidth/qmlwidth);
-    startPnt.setY(e.y() * imageheight/(qmlheight) );
+    double tempHeight = qmlheight*0.8;
+    //设置起始点 ，要先乘后除防止int类型相除之后小于1变成了0，高度乘以0.8是因为图片在qml前端显示是宽度占满，高度下方空余20%位置来放参数输入框
+    if((double)imagewidth/(double)imageheight >= (double)qmlwidth/(double)tempHeight)
+    {
+        startPnt.setX(e.x() * imagewidth/qmlwidth);
+        int picHeightInQml = qmlwidth*imageheight/imagewidth;
+        int topline = (tempHeight-picHeightInQml) / 2;
+        startPnt.setY( (e.y()-topline)*imageheight / picHeightInQml );
+    }
+    else
+    {
+        startPnt.setY(e.y() * imageheight/tempHeight );
+        int picWidthInQml = tempHeight*imagewidth/imageheight;
+        int leftline = (qmlwidth-picWidthInQml) / 2;
+        startPnt.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
+    }
+//    startPnt.setX(e.x() * imagewidth/qmlwidth);
+//    startPnt.setY(e.y() * imageheight/(qmlheight) );
 }
 
 void ImageProcess::setEndPnt(QPoint e)
 {
-    endPnt.setX(e.x() * imagewidth/qmlwidth);
-    endPnt.setY(e.y() * imageheight/(qmlheight) );
+    double tempHeight = qmlheight*0.8;
+    //设置起始点 ，要先乘后除防止int类型相除之后小于1变成了0，高度乘以0.8是因为图片在qml前端显示是宽度占满，高度下方空余20%位置来放参数输入框
+    if((double)imagewidth/(double)imageheight >= (double)qmlwidth/(double)tempHeight)
+    {
+        endPnt.setX(e.x() * imagewidth/qmlwidth);
+        int picHeightInQml = qmlwidth*imageheight/imagewidth;
+        int topline = (tempHeight-picHeightInQml) / 2;
+        endPnt.setY( (e.y()-topline)*imageheight / picHeightInQml );
+    }
+    else
+    {
+        endPnt.setY(e.y() * imageheight/tempHeight );
+        int picWidthInQml = tempHeight*imagewidth/imageheight;
+        int leftline = (qmlwidth-picWidthInQml) / 2;
+        endPnt.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
+    }
+//    endPnt.setX(e.x() * imagewidth/qmlwidth);
+//    endPnt.setY(e.y() * imageheight/(qmlheight));
 }
 
 void ImageProcess::setRecStartPnt(QPoint e)
 {
-    recStarPoint.setX(e.x()*imagewidth/qmlwidth);
-    recStarPoint.setY(e.y()*imageheight/qmlheight);
+    double tempHeight = qmlheight*0.8;
+    //设置起始点 ，要先乘后除防止int类型相除之后小于1变成了0，高度乘以0.8是因为图片在qml前端显示是宽度占满，高度下方空余20%位置来放参数输入框
+    if((double)imagewidth/(double)imageheight >= (double)qmlwidth/(double)tempHeight)
+    {
+        recStarPoint.setX(e.x() * imagewidth/qmlwidth);
+        int picHeightInQml = qmlwidth*imageheight/imagewidth;
+        int topline = (tempHeight-picHeightInQml) / 2;
+        recStarPoint.setY( (e.y()-topline)*imageheight / picHeightInQml );
+    }
+    else
+    {
+        recStarPoint.setY(e.y() * imageheight/tempHeight );
+        int picWidthInQml = tempHeight*imagewidth/imageheight;
+        int leftline = (qmlwidth-picWidthInQml) / 2;
+        recStarPoint.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
+    }
+//    recStarPoint.setX(e.x()*imagewidth/qmlwidth);
+//    recStarPoint.setY(e.y()*imageheight/qmlheight);
 }
 
 void ImageProcess::setRectEndPnt(QPoint e)
 {
-    recEndPoint.setX(e.x()*imagewidth/qmlwidth);
-    recEndPoint.setY(e.y()*imageheight/qmlheight);
+    double tempHeight = qmlheight*0.8;
+    //设置起始点 ，要先乘后除防止int类型相除之后小于1变成了0，高度乘以0.8是因为图片在qml前端显示是宽度占满，高度下方空余20%位置来放参数输入框
+    if((double)imagewidth/(double)imageheight >= (double)qmlwidth/(double)tempHeight)
+    {
+        recEndPoint.setX(e.x() * imagewidth/qmlwidth);
+        int picHeightInQml = qmlwidth*imageheight/imagewidth;
+        int topline = (tempHeight-picHeightInQml) / 2;
+        recEndPoint.setY( (e.y()-topline)*imageheight / picHeightInQml );
+    }
+    else
+    {
+        recEndPoint.setY(e.y() * imageheight/tempHeight );
+        int picWidthInQml = tempHeight*imagewidth/imageheight;
+        int leftline = (qmlwidth-picWidthInQml) / 2;
+        recEndPoint.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
+    }
+//    recEndPoint.setX(e.x()*imagewidth/qmlwidth);
+//    recEndPoint.setY(e.y()*imageheight/qmlheight);
 }
 
 void ImageProcess::getqmlmessage(int x, int y)

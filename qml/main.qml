@@ -100,9 +100,6 @@ Window {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 //传入红色画笔
                 imageItem.pntpaint(7)
-
-
-
             }
             onReleased:
             {
