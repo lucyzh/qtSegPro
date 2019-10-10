@@ -126,8 +126,6 @@ void ImageProcess::setEndPnt(QPoint e)
         int leftline = (qmlwidth-picWidthInQml) / 2;
         endPnt.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
     }
-//    endPnt.setX(e.x() * imagewidth/qmlwidth);
-//    endPnt.setY(e.y() * imageheight/(qmlheight));
 }
 
 void ImageProcess::setRecStartPnt(QPoint e)
@@ -148,8 +146,6 @@ void ImageProcess::setRecStartPnt(QPoint e)
         int leftline = (qmlwidth-picWidthInQml) / 2;
         recStarPoint.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
     }
-//    recStarPoint.setX(e.x()*imagewidth/qmlwidth);
-//    recStarPoint.setY(e.y()*imageheight/qmlheight);
 }
 
 void ImageProcess::setRectEndPnt(QPoint e)
@@ -170,20 +166,17 @@ void ImageProcess::setRectEndPnt(QPoint e)
         int leftline = (qmlwidth-picWidthInQml) / 2;
         recEndPoint.setX( (e.x()-leftline)*imagewidth / picWidthInQml);
     }
-//    recEndPoint.setX(e.x()*imagewidth/qmlwidth);
-//    recEndPoint.setY(e.y()*imageheight/qmlheight);
 }
 
 void ImageProcess::getqmlmessage(int x, int y)
 {
-
     qmlwidth = x ;
     qmlheight = y ;
 }
 
 void  ImageProcess::recrealtimeshow()
 {
-//    update();
+
 }
 
 void  ImageProcess::pntpaint(int color_flag)
@@ -244,7 +237,7 @@ void ImageProcess::setfgInMask()
         circle(mask, *it, radius, GC_FGD, thickness);
 }
 
-vector<Point> ImageProcess::getbgPxls()
+void ImageProcess::getbgPxls()
 {
     for(int i=0;i<points.length();i++){
         cv::Point pnStart = convertQPoint2cvPoint(points[i]->startPnt);
@@ -252,8 +245,6 @@ vector<Point> ImageProcess::getbgPxls()
         bgdPxls.push_back(pnStart);
         bgdPxls.push_back(pnEnd);
     }
-
-    return bgdPxls;
 }
 
 void ImageProcess::setbgInMask()
@@ -341,7 +332,6 @@ void ImageProcess::startSeg1()
         setbgInMask();
         isInitialized = false;
         qDebug() << "seg with mask" << endl;
-        //cv::grabCut(*image, mask,rect,bgmodel,fgmodel,4,GC_INIT_WITH_MASK);
         for(int i = 0; i < 6; i++) {
             if ( isInitialized ) {
                 cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1);
@@ -353,9 +343,7 @@ void ImageProcess::startSeg1()
         }
     }
     else {
-        qDebug() << "seg with rect" << endl;
         isInitialized = false;
-        qDebug() << "seg with mask" << endl;
         for(int i = 0; i < 4; i++) {
             if ( isInitialized ) {
                 cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1);
@@ -369,9 +357,14 @@ void ImageProcess::startSeg1()
 
     mask = mask & 1;//&处理，保留GC_FGD, GC_PR_FGD
     cv::compare(mask,cv::GC_FGD, mask, cv::CMP_EQ);
-    cv::Mat fgd(ori.size(), CV_8UC3, cv::Scalar(255,255,255));
+    cv::Mat fgd(ori.size(), CV_8UC3, cv::Scalar(0,0,0));
     img.copyTo(fgd, mask);
-    imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
+
+    cv::Mat fgdRect = fgd(rect);
+    imageSeg = QImage((uchar*) fgdRect.data, fgdRect.cols, fgdRect.rows, fgdRect.step, QImage::Format_RGB888);
+
+    //imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
+
     qDebug() << "seg finished!!!" << endl;
 }
 
@@ -394,8 +387,6 @@ QImage ImageProcess::startSeg()
 //    cv::GC_PR_BGD  == 2//表示可能是背景
 //    cv::GC_PR_FGD  == 3//表示可能是前景
 
-//    cv::compare(mask,cv::GC_PR_FGD, mask, cv::CMP_EQ);
-
     if (fgdPxls.size()>0 || bgdPxls.size()>0) {
         setfgInMask();
         setbgInMask();
@@ -411,8 +402,12 @@ QImage ImageProcess::startSeg()
     cv::compare(mask,cv::GC_PR_FGD, mask, cv::CMP_EQ);
     cv::Mat fgd(ori.size(), CV_8UC3, cv::Scalar(255,255,255));
     img.copyTo(fgd, mask);
-    imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
+
+    cv::Mat fgcRect = fgd(rect);
+
+    imageSeg = QImage((uchar*) fgcRect.data, fgcRect.cols, fgcRect.rows, fgcRect.step, QImage::Format_RGB888);
     qDebug() << "seg finished!!!" << endl;
+    return imageSeg;
 }
 
 int ImageProcess::nextIter()

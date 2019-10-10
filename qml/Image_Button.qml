@@ -78,19 +78,15 @@ Rectangle {
                 cImage_Button.state = "hover";
                 //cImage_Button.color = "#212121"
             }
-//            console.log("enter->menuButton");
         }
         onExited:
         {
             if(cImage_Button.state === "hover"){
                 cImage_Button.state = "normal";
-               // cImage_Button.color = "#404040"
             }
-//            console.log("exit->menuButton");
         }
         onWheel:
         {
-//            console.log("wheel->menuButton");
         }
 
     }

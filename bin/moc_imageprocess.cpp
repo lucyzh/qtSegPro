@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ImageProcess_t {
-    QByteArrayData data[41];
-    char stringdata0[431];
+    QByteArrayData data[40];
+    char stringdata0[417];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -65,14 +65,13 @@ QT_MOC_LITERAL(29, 319, 15), // "updateIterCount"
 QT_MOC_LITERAL(30, 335, 9), // "startSeg1"
 QT_MOC_LITERAL(31, 345, 9), // "getfgPxls"
 QT_MOC_LITERAL(32, 355, 9), // "getbgPxls"
-QT_MOC_LITERAL(33, 365, 13), // "vector<Point>"
-QT_MOC_LITERAL(34, 379, 8), // "setImage"
-QT_MOC_LITERAL(35, 388, 3), // "Mat"
-QT_MOC_LITERAL(36, 392, 6), // "_image"
-QT_MOC_LITERAL(37, 399, 10), // "getBinMask"
-QT_MOC_LITERAL(38, 410, 7), // "comMask"
-QT_MOC_LITERAL(39, 418, 4), // "Mat&"
-QT_MOC_LITERAL(40, 423, 7) // "binMask"
+QT_MOC_LITERAL(33, 365, 8), // "setImage"
+QT_MOC_LITERAL(34, 374, 3), // "Mat"
+QT_MOC_LITERAL(35, 378, 6), // "_image"
+QT_MOC_LITERAL(36, 385, 10), // "getBinMask"
+QT_MOC_LITERAL(37, 396, 7), // "comMask"
+QT_MOC_LITERAL(38, 404, 4), // "Mat&"
+QT_MOC_LITERAL(39, 409, 7) // "binMask"
 
     },
     "ImageProcess\0openImage\0\0processImage\0"
@@ -84,9 +83,9 @@ QT_MOC_LITERAL(40, 423, 7) // "binMask"
     "setRectInMask\0setfgInMask\0setbgInMask\0"
     "convertQPoint2cvPoint\0cv::Point\0reset\0"
     "nextIter\0showImage\0updateIterCount\0"
-    "startSeg1\0getfgPxls\0getbgPxls\0"
-    "vector<Point>\0setImage\0Mat\0_image\0"
-    "getBinMask\0comMask\0Mat&\0binMask"
+    "startSeg1\0getfgPxls\0getbgPxls\0setImage\0"
+    "Mat\0_image\0getBinMask\0comMask\0Mat&\0"
+    "binMask"
 };
 #undef QT_MOC_LITERAL
 
@@ -130,8 +129,8 @@ static const uint qt_meta_data_ImageProcess[] = {
       30,    0,  195,    2, 0x02 /* Public */,
       31,    0,  196,    2, 0x02 /* Public */,
       32,    0,  197,    2, 0x02 /* Public */,
-      34,    1,  198,    2, 0x02 /* Public */,
-      37,    2,  201,    2, 0x02 /* Public */,
+      33,    1,  198,    2, 0x02 /* Public */,
+      36,    2,  201,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QImage,
@@ -159,9 +158,9 @@ static const uint qt_meta_data_ImageProcess[] = {
     QMetaType::Int,
     QMetaType::Void,
     QMetaType::Void,
-    0x80000000 | 33,
-    QMetaType::Void, 0x80000000 | 35,   36,
-    QMetaType::Void, 0x80000000 | 35, 0x80000000 | 39,   38,   40,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 34,   35,
+    QMetaType::Void, 0x80000000 | 34, 0x80000000 | 38,   37,   39,
 
        0        // eod
 };
@@ -205,8 +204,7 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 23: _t->startSeg1(); break;
         case 24: _t->getfgPxls(); break;
-        case 25: { vector<Point> _r = _t->getbgPxls();
-            if (_a[0]) *reinterpret_cast< vector<Point>*>(_a[0]) = std::move(_r); }  break;
+        case 25: _t->getbgPxls(); break;
         case 26: _t->setImage((*reinterpret_cast< const Mat(*)>(_a[1]))); break;
         case 27: _t->getBinMask((*reinterpret_cast< const Mat(*)>(_a[1])),(*reinterpret_cast< Mat(*)>(_a[2]))); break;
         default: ;

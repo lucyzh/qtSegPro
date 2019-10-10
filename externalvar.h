@@ -13,7 +13,6 @@
 using namespace std;
 using namespace cv;
 
-
 extern QImage imageGlobal;
 extern QImage imageOri;
 extern QImage imageSeg;

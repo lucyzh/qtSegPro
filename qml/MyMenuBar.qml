@@ -12,30 +12,6 @@ Rectangle {
         anchors.fill: parent;
         source: "images/Toolbar/ToolbarBG.png";
     }
-//    Image   //menu工具栏分割线
-//    {   z:0.2
-//        id: menuDivideone;
-//        width: 2;
-//        height: 30;
-//        anchors.left: parent.left;
-//        anchors.leftMargin: 77;
-//        anchors.top: parent.top;
-//        anchors.topMargin: 5;
-//        source: "images/Main/Menu bar dividing line_@2x.png";
-//    }
-//    Image   //menu工具栏分割线
-//    {   z:0.2
-//        id: menuDividetwo;
-//        width: 2;
-//        height: 30;
-//        anchors.left: parent.left;
-//        anchors.leftMargin: 153;
-//        anchors.top: parent.top;
-//        anchors.topMargin: 5;
-//        source: "images/Main/Menu bar dividing line_@2x.png";
-//    }
-
-
 
     Row
     {
@@ -44,7 +20,6 @@ Rectangle {
         anchors.left: parent.left;
         anchors.leftMargin: 1;
         anchors.top: parent.top;
-//        anchors.topMargin: 3;
         height: parent.height;
         spacing: 1;
 
@@ -183,24 +158,6 @@ Rectangle {
                 state: "normal";
                 nIndex: 9;
             }
-//            MyMenuButton
-//            {
-//                width: 200;
-//                height: 30;
-//                nTextSize: 16;
-//                sTextText: "还原";
-//                state: "normal";
-//                nIndex: 10;
-//            }
-//            MyMenuButton
-//            {
-//                width: 200;
-//                height: 30;
-//                nTextSize: 16;
-//                sTextText: "设置";
-//                state: "normal";
-//                nIndex: 11;
-//            }
         }
     }
 

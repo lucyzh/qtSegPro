@@ -10,7 +10,7 @@ Rectangle {
 
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
-        anchors.topMargin: 40;
+        anchors.topMargin: 10;
         height: parent.height;
         spacing: 4;
         function setChildrenState(nIndex)
@@ -54,10 +54,9 @@ Rectangle {
             sHoverImage: "images/Main/Rectangle tool2_@2x.png";
             state: "normal";
             sTextText: "矩形工具";
-            nTextSize: 7;
+            nTextSize: 12;
             nIndex: 0;
             onCToolButtonIndexBack: {
-
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
 
@@ -68,8 +67,6 @@ Rectangle {
                 anchors.fill: parent
                 onClicked:
                 {
-                    console.log("click ready to paint rec")
-                   // menuAllMouseArea.visible = false
                     maforpaintingrec.visible = true
                     maforpaintingpnt.visible = false
                     mabgpaintingpnt = false
@@ -88,7 +85,7 @@ Rectangle {
             sHoverImage: "images/Main/brush2_@2x.png";
             state: "normal";
             sTextText: "标记前景";
-            nTextSize: 7;
+            nTextSize: 12;
             nIndex: 1;
             MouseArea
             {
@@ -118,7 +115,7 @@ Rectangle {
             sHoverImage: "images/Main/brush2_@2x.png";
             state: "normal";
             sTextText: "标记背景";
-            nTextSize: 7;
+            nTextSize: 12;
             nIndex: 2;
             onCToolButtonIndexBack: {
               left_cToolButtonList.setChildrenState(nIndex)

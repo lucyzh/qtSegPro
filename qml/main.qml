@@ -30,7 +30,7 @@ Window {
         id: titleBar_mainWin;
         anchors.top: parent.top;
         width: parent.width;
-        height: 90;
+        height: 40;
        // color: "#373737"
     }
 
@@ -40,7 +40,7 @@ Window {
         z:0.3
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 90;
+        anchors.topMargin: 40;
         width: parent.width;
         height: 40;
         color: "#999999"
@@ -52,7 +52,7 @@ Window {
         z:0.1;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 120;
+        anchors.topMargin: 80;
         anchors.leftMargin: 70;
 
         MouseArea
@@ -78,7 +78,6 @@ Window {
                 imageItem.recpaint()
                 imageItem.setRectEndPnt(Qt.point(mouseX,mouseY))
             }
-
         }
 
         MouseArea
@@ -145,38 +144,17 @@ Window {
         z:0.1;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 120;
+        anchors.topMargin: 80;
         anchors.leftMargin:  parent.width / 2 ;
+    }
 
-
-    }
-    ParameterRect{  //第一个参数框
-        id: parameterRect;
-        z:0.2;
-        width: 240;
-        height: 40;
-        anchors.left: parent.left;
-        anchors.top: parent.top;
-        anchors.topMargin: parent.height-85;
-        anchors.leftMargin: parent.width/2-500;
-    }
-    ParameterRectTwo{    //第二个参数框
-        id: parameterRectTwo;
-        z:0.2;
-        width: 240;
-        height: 40;
-        anchors.left: parent.left;
-        anchors.top: parent.top;
-        anchors.topMargin: parent.height-85;
-        anchors.leftMargin: parent.width/2-250;
-    }
     LeftToolBar       //矩形工具、画笔工具等工具栏
     {
         id: leftToolBar;
         z:0.2;
         anchors.left:parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 90;
+        anchors.topMargin: 80;
         width: 70;
         height: parent.height;
         color: "#404040";

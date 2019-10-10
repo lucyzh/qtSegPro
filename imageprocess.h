@@ -61,6 +61,12 @@ public:
     QVector<myLine*> rects;
     QVector<myLine*> lines;
 
+    QPen pen;
+    QImage oriImg;
+    int opMode;
+    QVector<int> opModeLists;
+    int lineNum;
+
 public:
 
     Q_INVOKABLE QImage openImage();
@@ -92,7 +98,7 @@ public:
 
     Q_INVOKABLE void startSeg1();
     Q_INVOKABLE void getfgPxls();
-    Q_INVOKABLE vector<Point> getbgPxls();
+    Q_INVOKABLE void getbgPxls();
     Q_INVOKABLE void setImage(const Mat& _image);
 
     //-------------State Change Methods---------------

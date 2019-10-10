@@ -14,7 +14,6 @@ Rectangle {
           }
     }
 
-
     Image
     {
         id: imageBG_docWinRight;
@@ -36,7 +35,6 @@ Rectangle {
         }
 
 
-//        text: qsTr("<")
         onClicked: onMenuRight();
 
         MouseArea

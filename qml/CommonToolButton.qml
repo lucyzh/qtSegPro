@@ -22,10 +22,8 @@ Rectangle {
         height: 24;
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
-        anchors.topMargin: 7;
         source: sNormalImage;
     }
-
 
     Text {
         id: cToolButtonText;

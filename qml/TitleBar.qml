@@ -16,7 +16,7 @@ Rectangle{
     Text {
 
         id: text_titleBar;
-        height: 90;
+        height: 40;
         width: parent.width
         horizontalAlignment: Text.AlignHCenter;
         verticalAlignment: Text.AlignVCenter;
@@ -25,10 +25,9 @@ Rectangle{
         font.pixelSize: 20;
         font.letterSpacing: 1;
         font.bold: true;
-        text: "交互分割软件";
+        text: "中华文化元素交互分割软件";
 
     }
-
 
     Row
     {
@@ -47,8 +46,6 @@ Rectangle{
             sPressedImage: "images/Main/minimize2_@2x.png";
             sNormalImage: "images/Main/minimize_@2x.png";
             sHoverImage: "images/Main/minimize2_@2x.png";
-            //            nTextSize: 25;
-            //            sTextText: "-";
             state: "normal";
             nIndex: 0;
         }
