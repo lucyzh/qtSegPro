@@ -73,7 +73,7 @@ Rectangle {    //右侧工具栏
             onCToolButtonIndexBack: {
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-              imageItem.startSeg1()
+              imageItem.startSeg()
             }
         }
         CommonToolButton

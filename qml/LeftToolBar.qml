@@ -61,19 +61,6 @@ Rectangle {
               left_cToolButtonList.setChildrenColor(nIndex)
 
             }
-            MouseArea
-            {
-                id : rectoolma
-                anchors.fill: parent
-                onClicked:
-                {
-                    maforpaintingrec.visible = true
-                    maforpaintingpnt.visible = false
-                    mabgpaintingpnt = false
-                }
-            }
-
-
         }
         CommonToolButton
         {
@@ -87,18 +74,6 @@ Rectangle {
             sTextText: "标记前景";
             nTextSize: 12;
             nIndex: 1;
-            MouseArea
-            {
-                id : brushtoolma
-                anchors.fill: parent
-                onClicked:
-                {
-
-                    maforpaintingrec.visible = false
-                    maforpaintingpnt.visible = true
-                    mabgpaintingpnt = false
-                }
-            }
             onCToolButtonIndexBack: {
 
               left_cToolButtonList.setChildrenState(nIndex)
@@ -120,18 +95,6 @@ Rectangle {
             onCToolButtonIndexBack: {
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
-            }
-
-            MouseArea
-            {
-                id : brushtoolbg
-                anchors.fill: parent
-                onClicked:
-                {
-                    maforpaintingrec.visible = false
-                    maforpaintingpnt.visible = false
-                    mabgpaintingpnt.visible = true
-                }
             }
         }
    }

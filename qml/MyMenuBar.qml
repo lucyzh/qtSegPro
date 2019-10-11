@@ -86,10 +86,10 @@ Rectangle {
                 nIndex: 4;
                 onMenuButtonIndexBack:
                 {
-        //            qDebug("clicked");
-//                    imageItem.openImage();
+                    //            qDebug("clicked");
+                    //                    imageItem.openImage();
                     imageItem.openImage();
-        //            imageItem.processImage();
+                    //            imageItem.processImage();
                 }
             }
             MyMenuButton
@@ -148,6 +148,12 @@ Rectangle {
                 sTextText: "撤销";
                 state: "normal";
                 nIndex: 8;
+
+                MouseArea{
+                    id:maForUndo
+                    anchors.fill:parent
+                    onClicked: imageItem.undo()
+                }
             }
             MyMenuButton
             {
@@ -157,6 +163,11 @@ Rectangle {
                 sTextText: "重做";
                 state: "normal";
                 nIndex: 9;
+                MouseArea{
+                    id:maForClear
+                    anchors.fill:parent
+                    onClicked: imageItem.clear()
+                }
             }
         }
     }
@@ -217,7 +228,7 @@ Rectangle {
             rect_MenuFile.visible = false;
             rect_MenuEdit.visible = false;
             rect_MenuTool.visible = false;
-//            rect_MenuHelp.visible = false;
+            //            rect_MenuHelp.visible = false;
             menuAllMouseArea.visible = false;
             console.log("set success");
             menuAllMouseArea.visible = false

@@ -50,16 +50,35 @@ Rectangle {
         hoverEnabled: true;
         onPressed:
         {
-            if(mouse.button === Qt.LeftButton)
+            if(nIndex == 0)
             {
-//                console.log("leftMouse->MenuButton");
-            }else if(mouse.button === Qt.RightButton)
-            {
-//                console.log("rightMouse->MenuButton");
-            }else if(mouse.button === Qt.MidButtonn)
-            {
-//                console.log("midMouse->MenuButton");
+                console.log("click ready to paint rec")
+               // menuAllMouseArea.visible = false
+                maforpaintingrec.visible = true
+                maforpaintingpnt.visible = false
+                mabgpaintingpnt.visible = false
+                //allMouseArea.visible = false
             }
+            else if(nIndex == 1)
+            {
+                console.log("click ready to use brush")
+               // menuAllMouseArea.visible = false
+                maforpaintingrec.visible = false
+                maforpaintingpnt.visible = true
+                mabgpaintingpnt.visible = false
+                //allMouseArea.visible = false
+            }
+            else if(nIndex == 2)
+            {
+                maforpaintingrec.visible = false
+                maforpaintingpnt.visible = false
+                mabgpaintingpnt.visible = true
+            }
+            else
+            {
+                console.log("nIndex out of range")
+            }
+
             cTool_Button.state = "pressed";
 
         }

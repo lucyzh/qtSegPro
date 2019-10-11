@@ -64,18 +64,21 @@ Window {
             {
                 imageItem.getqmlmessage(imageOpen.width , imageOpen.height);
                 imageItem.setStartPnt(Qt.point(mouseX,mouseY))
+                imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.recPaintStart()
                 imageItem.setRecStartPnt(Qt.point(mouseX,mouseY))
             }
-            onPressAndHold:
+            onPositionChanged:
             {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
-                imageItem.setRectEndPnt()(Qt.point(mouseX,mouseY))
+                //imageItem.setRectEndPnt()(Qt.point(mouseX,mouseY))
+                imageItem.recrealtimeshow()
             }
             onReleased:
             {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 //矩形显示在界面上
-                imageItem.recpaint()
+                //imageItem.recpaint()
                 imageItem.setRectEndPnt(Qt.point(mouseX,mouseY))
             }
         }
@@ -104,6 +107,7 @@ Window {
             {
                 //timerforpntpaint.running = false
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaintend()
                 imageItem.getfgPxls()
             }
         }
@@ -130,9 +134,10 @@ Window {
             }
             onReleased:
             {
-                timerforpntpaint.running = false
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
+                imageItem.pntpaintend()
                 imageItem.getbgPxls();
+
             }
 
         }

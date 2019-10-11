@@ -36,8 +36,8 @@ public:
 //    void mouseReleaseEvent(QMouseEvent *e);
 
 public:
-    //    QWidget *widget;
     QImage imageRes;
+    QImage originalImage;
     int imagewidth;
     int imageheight;
 
@@ -57,9 +57,11 @@ public:
     QPoint startPnt;
     QPoint endPnt;
     bool isPressed;
-    QVector<myLine*> points;
+    //QVector<myLine*> points;
+
+    //存放myline类型，方便撤销
     QVector<myLine*> rects;
-    QVector<myLine*> lines;
+    QVector<QVector<myLine*>> lines;
 
     QPen pen;
     QImage oriImg;
@@ -71,7 +73,6 @@ public:
 
     Q_INVOKABLE QImage openImage();
     Q_INVOKABLE QImage processImage();
-    Q_INVOKABLE QImage recpaint();
     Q_INVOKABLE void setStartPnt(QPoint e);
     Q_INVOKABLE void setEndPnt(QPoint e);
     Q_INVOKABLE void setRecStartPnt(QPoint);
@@ -80,11 +81,15 @@ public:
     Q_INVOKABLE void recrealtimeshow();
     Q_INVOKABLE void pntpaint(int);
     Q_INVOKABLE void pntpaintingstart();
+    Q_INVOKABLE void pntpaintend();
+    Q_INVOKABLE void clear();
+    Q_INVOKABLE void rePaint();
+    Q_INVOKABLE void undo();
+    Q_INVOKABLE QImage recPaintStart();
 
     Q_INVOKABLE void getModelParam(QString);
 
     //--------------grabCut----------------
-    Q_INVOKABLE QImage startSeg();
     Q_INVOKABLE void initialRect();
     Q_INVOKABLE vector<cv::Point> getRecPoint();
     Q_INVOKABLE void setRectInMask();
@@ -96,13 +101,11 @@ public:
     Q_INVOKABLE void showImage() const;
     Q_INVOKABLE int updateIterCount();
 
-    Q_INVOKABLE void startSeg1();
+    Q_INVOKABLE void startSeg();
     Q_INVOKABLE void getfgPxls();
     Q_INVOKABLE void getbgPxls();
     Q_INVOKABLE void setImage(const Mat& _image);
 
-    //-------------State Change Methods---------------
-    //...先不判空，实现最基本的功能
 
 
     //------------static methods---------------
