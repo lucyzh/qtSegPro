@@ -427,6 +427,7 @@ void ImageProcess::showImage() const{
 }
 
 //set the rectangle(GC_PR_FGD) on mask
+//rect 在setRectInMask中进行初始化
 void ImageProcess::setRectInMask()
 {
     vector<cv::Point> vecpoints = getRecPoint();
@@ -437,6 +438,8 @@ void ImageProcess::setRectInMask()
     rect.y = max(0, star.y);
     rect.width = min(end.x-star.x, image->cols-star.x);
     rect.height = min(end.y-star.y, image->rows-star.y);
+
+    qDebug() << "inside setRectinMask rect.width=" << rect.width << endl;
 
     mask.create(image->size(), CV_8UC1);
     CV_Assert(!mask.empty());
@@ -450,12 +453,18 @@ void ImageProcess::setImage(const Mat &_image)
     image = &_image;
 }
 
+
+/*
+cv::GC_BGD  == 0//表示是背景
+cv::GC_PR_BGD  == 2//表示可能是背景
+cv::GC_FGD  == 1//表示是前景
+cv::GC_PR_FGD  == 3//表示可能是前景
+*/
 //seg the image with rectangle or mask
 void ImageProcess::startSeg()
 {
     cv::Mat ori = QImage2cvMat(imageOri,true,false);
-
-    Mat img;
+    cv::Mat img;
     if(ori.type()==CV_8UC4){
         cvtColor(ori,img,COLOR_BGRA2RGB);
         qDebug() << "convert to CV_8UC3" << endl;
@@ -463,12 +472,13 @@ void ImageProcess::startSeg()
     else if (ori.type()/8==CV_8UC3) {
         ori.copyTo(img);
     }
+
     setImage(img);
     setRectInMask();
-//    cv::GC_BGD  == 0//表示是背景
-//    cv::GC_PR_BGD  == 2//表示可能是背景
-//    cv::GC_FGD  == 1//表示是前景
-//    cv::GC_PR_FGD  == 3//表示可能是前景
+
+    if (img.empty() || rect.width == 0 || rect.height == 0) {
+        return;
+    }
 
     if (fgdPxls.size()>0 || bgdPxls.size()>0) {
         setfgInMask();
@@ -487,7 +497,7 @@ void ImageProcess::startSeg()
     }
     else {
         isInitialized = false;
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 6; i++) {
             if ( isInitialized ) {
                 cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1);
             }
@@ -511,8 +521,13 @@ void ImageProcess::startSeg()
     qDebug() << "seg finished!!!" << endl;
 }
 
-int ImageProcess::nextIter()
-{
+void ImageProcess::saveSeg() {
+    if(!mask.empty()) {
+        //imwrite("/Users/lucy/Desktop/1.jpg", mask);
+    }
+}
+
+int ImageProcess::nextIter(){
     cv::Mat ori = QImage2cvMat(imageGlobal,true,false);
     cv::Mat img;
     if(ori.type()==CV_8UC4){

@@ -171,7 +171,7 @@ Window {
         z:0.2;
         anchors.right:parent.right;
         anchors.top: parent.top;
-        anchors.topMargin: 90;
+        anchors.topMargin: 80;
         width: 70;
         height: parent.height;
         color: "#404040";

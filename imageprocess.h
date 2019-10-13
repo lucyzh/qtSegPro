@@ -102,11 +102,10 @@ public:
     Q_INVOKABLE int updateIterCount();
 
     Q_INVOKABLE void startSeg();
+    Q_INVOKABLE void saveSeg();
     Q_INVOKABLE void getfgPxls();
     Q_INVOKABLE void getbgPxls();
     Q_INVOKABLE void setImage(const Mat& _image);
-
-
 
     //------------static methods---------------
     Q_INVOKABLE static void getBinMask(const Mat& comMask, Mat& binMask);

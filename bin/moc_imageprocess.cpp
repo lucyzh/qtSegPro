@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ImageProcess_t {
-    QByteArrayData data[43];
-    char stringdata0[443];
+    QByteArrayData data[44];
+    char stringdata0[451];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -66,15 +66,16 @@ QT_MOC_LITERAL(30, 327, 8), // "nextIter"
 QT_MOC_LITERAL(31, 336, 9), // "showImage"
 QT_MOC_LITERAL(32, 346, 15), // "updateIterCount"
 QT_MOC_LITERAL(33, 362, 8), // "startSeg"
-QT_MOC_LITERAL(34, 371, 9), // "getfgPxls"
-QT_MOC_LITERAL(35, 381, 9), // "getbgPxls"
-QT_MOC_LITERAL(36, 391, 8), // "setImage"
-QT_MOC_LITERAL(37, 400, 3), // "Mat"
-QT_MOC_LITERAL(38, 404, 6), // "_image"
-QT_MOC_LITERAL(39, 411, 10), // "getBinMask"
-QT_MOC_LITERAL(40, 422, 7), // "comMask"
-QT_MOC_LITERAL(41, 430, 4), // "Mat&"
-QT_MOC_LITERAL(42, 435, 7) // "binMask"
+QT_MOC_LITERAL(34, 371, 7), // "saveSeg"
+QT_MOC_LITERAL(35, 379, 9), // "getfgPxls"
+QT_MOC_LITERAL(36, 389, 9), // "getbgPxls"
+QT_MOC_LITERAL(37, 399, 8), // "setImage"
+QT_MOC_LITERAL(38, 408, 3), // "Mat"
+QT_MOC_LITERAL(39, 412, 6), // "_image"
+QT_MOC_LITERAL(40, 419, 10), // "getBinMask"
+QT_MOC_LITERAL(41, 430, 7), // "comMask"
+QT_MOC_LITERAL(42, 438, 4), // "Mat&"
+QT_MOC_LITERAL(43, 443, 7) // "binMask"
 
     },
     "ImageProcess\0openImage\0\0processImage\0"
@@ -87,9 +88,9 @@ QT_MOC_LITERAL(42, 435, 7) // "binMask"
     "setRectInMask\0setfgInMask\0setbgInMask\0"
     "convertQPoint2cvPoint\0cv::Point\0reset\0"
     "nextIter\0showImage\0updateIterCount\0"
-    "startSeg\0getfgPxls\0getbgPxls\0setImage\0"
-    "Mat\0_image\0getBinMask\0comMask\0Mat&\0"
-    "binMask"
+    "startSeg\0saveSeg\0getfgPxls\0getbgPxls\0"
+    "setImage\0Mat\0_image\0getBinMask\0comMask\0"
+    "Mat&\0binMask"
 };
 #undef QT_MOC_LITERAL
 
@@ -99,7 +100,7 @@ static const uint qt_meta_data_ImageProcess[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      31,   14, // methods
+      32,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -107,37 +108,38 @@ static const uint qt_meta_data_ImageProcess[] = {
        0,       // signalCount
 
  // methods: name, argc, parameters, tag, flags
-       1,    0,  169,    2, 0x02 /* Public */,
-       3,    0,  170,    2, 0x02 /* Public */,
-       4,    1,  171,    2, 0x02 /* Public */,
-       6,    1,  174,    2, 0x02 /* Public */,
-       7,    1,  177,    2, 0x02 /* Public */,
-       8,    1,  180,    2, 0x02 /* Public */,
-       9,    2,  183,    2, 0x02 /* Public */,
-      12,    0,  188,    2, 0x02 /* Public */,
-      13,    1,  189,    2, 0x02 /* Public */,
-      14,    0,  192,    2, 0x02 /* Public */,
-      15,    0,  193,    2, 0x02 /* Public */,
-      16,    0,  194,    2, 0x02 /* Public */,
-      17,    0,  195,    2, 0x02 /* Public */,
-      18,    0,  196,    2, 0x02 /* Public */,
-      19,    0,  197,    2, 0x02 /* Public */,
-      20,    1,  198,    2, 0x02 /* Public */,
-      21,    0,  201,    2, 0x02 /* Public */,
-      22,    0,  202,    2, 0x02 /* Public */,
-      24,    0,  203,    2, 0x02 /* Public */,
-      25,    0,  204,    2, 0x02 /* Public */,
-      26,    0,  205,    2, 0x02 /* Public */,
-      27,    1,  206,    2, 0x02 /* Public */,
-      29,    0,  209,    2, 0x02 /* Public */,
-      30,    0,  210,    2, 0x02 /* Public */,
-      31,    0,  211,    2, 0x02 /* Public */,
-      32,    0,  212,    2, 0x02 /* Public */,
-      33,    0,  213,    2, 0x02 /* Public */,
-      34,    0,  214,    2, 0x02 /* Public */,
-      35,    0,  215,    2, 0x02 /* Public */,
-      36,    1,  216,    2, 0x02 /* Public */,
-      39,    2,  219,    2, 0x02 /* Public */,
+       1,    0,  174,    2, 0x02 /* Public */,
+       3,    0,  175,    2, 0x02 /* Public */,
+       4,    1,  176,    2, 0x02 /* Public */,
+       6,    1,  179,    2, 0x02 /* Public */,
+       7,    1,  182,    2, 0x02 /* Public */,
+       8,    1,  185,    2, 0x02 /* Public */,
+       9,    2,  188,    2, 0x02 /* Public */,
+      12,    0,  193,    2, 0x02 /* Public */,
+      13,    1,  194,    2, 0x02 /* Public */,
+      14,    0,  197,    2, 0x02 /* Public */,
+      15,    0,  198,    2, 0x02 /* Public */,
+      16,    0,  199,    2, 0x02 /* Public */,
+      17,    0,  200,    2, 0x02 /* Public */,
+      18,    0,  201,    2, 0x02 /* Public */,
+      19,    0,  202,    2, 0x02 /* Public */,
+      20,    1,  203,    2, 0x02 /* Public */,
+      21,    0,  206,    2, 0x02 /* Public */,
+      22,    0,  207,    2, 0x02 /* Public */,
+      24,    0,  208,    2, 0x02 /* Public */,
+      25,    0,  209,    2, 0x02 /* Public */,
+      26,    0,  210,    2, 0x02 /* Public */,
+      27,    1,  211,    2, 0x02 /* Public */,
+      29,    0,  214,    2, 0x02 /* Public */,
+      30,    0,  215,    2, 0x02 /* Public */,
+      31,    0,  216,    2, 0x02 /* Public */,
+      32,    0,  217,    2, 0x02 /* Public */,
+      33,    0,  218,    2, 0x02 /* Public */,
+      34,    0,  219,    2, 0x02 /* Public */,
+      35,    0,  220,    2, 0x02 /* Public */,
+      36,    0,  221,    2, 0x02 /* Public */,
+      37,    1,  222,    2, 0x02 /* Public */,
+      40,    2,  225,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QImage,
@@ -169,8 +171,9 @@ static const uint qt_meta_data_ImageProcess[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 37,   38,
-    QMetaType::Void, 0x80000000 | 37, 0x80000000 | 41,   40,   42,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 38,   39,
+    QMetaType::Void, 0x80000000 | 38, 0x80000000 | 42,   41,   43,
 
        0        // eod
 };
@@ -215,10 +218,11 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 25: { int _r = _t->updateIterCount();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 26: _t->startSeg(); break;
-        case 27: _t->getfgPxls(); break;
-        case 28: _t->getbgPxls(); break;
-        case 29: _t->setImage((*reinterpret_cast< const Mat(*)>(_a[1]))); break;
-        case 30: _t->getBinMask((*reinterpret_cast< const Mat(*)>(_a[1])),(*reinterpret_cast< Mat(*)>(_a[2]))); break;
+        case 27: _t->saveSeg(); break;
+        case 28: _t->getfgPxls(); break;
+        case 29: _t->getbgPxls(); break;
+        case 30: _t->setImage((*reinterpret_cast< const Mat(*)>(_a[1]))); break;
+        case 31: _t->getBinMask((*reinterpret_cast< const Mat(*)>(_a[1])),(*reinterpret_cast< Mat(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -253,13 +257,13 @@ int ImageProcess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 31)
+        if (_id < 32)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 31;
+        _id -= 32;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 31)
+        if (_id < 32)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 31;
+        _id -= 32;
     }
     return _id;
 }

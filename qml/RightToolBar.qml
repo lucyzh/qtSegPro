@@ -5,26 +5,12 @@ Rectangle {    //右侧工具栏
 
     id: rightToolBar;
 
-// 分割线是否有必要？？？
-//    Image   //右侧工具栏分割线
-//    {   z:0.2
-//        id: rightDivide;
-//        width: 60;
-//        height: 2;
-//        anchors.left: parent.left;
-//        anchors.leftMargin: 5;
-//        anchors.top: parent.top;
-//        anchors.topMargin: 210;
-//        source: "images/Main/Functional dividing line_@2x.png";
-//    }
-
     Column   //右边工具栏列表
     {
         id: right_cToolButtonList;
 
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
-        //anchors.topMargin: 40;
         height: parent.height;
         spacing: 4;
         function setChildrenState(nIndex)
@@ -33,12 +19,10 @@ Rectangle {    //右侧工具栏
             {
                 if(nIndex === i)
                 {
-                    console.log("111")
                     right_cToolButtonList.children[i].state = "pressed";
                 }
                 else
                 {
-                    console.log("222")
                     right_cToolButtonList.children[i].state = "normal";
                 }
             }
@@ -49,12 +33,10 @@ Rectangle {    //右侧工具栏
             {
                 if(nIndex === i)
                 {
-                    console.log("111")
                     right_cToolButtonList.children[i].color = "#212121";
                 }
                 else
                 {
-                    console.log("222")
                     right_cToolButtonList.children[i].color = "#404040";
                 }
             }
@@ -76,24 +58,24 @@ Rectangle {    //右侧工具栏
               imageItem.startSeg()
             }
         }
-        CommonToolButton
-        {
-            width: 70;
-            height: 54;
-            sPressedImage: "images/Main/Update2_@2x.png";
-            sNormalImage: "images/Main/Update_@2x.png";
-            sHoverImage: "images/Main/Update2_@2x.png";
-            state: "normal";
-            sTextText: "更新分割";
-            nTextSize: 12;
-            nIndex: 1;
-            onCToolButtonIndexBack: {
+//        CommonToolButton
+//        {
+//            width: 70;
+//            height: 54;
+//            sPressedImage: "images/Main/Update2_@2x.png";
+//            sNormalImage: "images/Main/Update_@2x.png";
+//            sHoverImage: "images/Main/Update2_@2x.png";
+//            state: "normal";
+//            sTextText: "更新分割";
+//            nTextSize: 12;
+//            nIndex: 1;
+//            onCToolButtonIndexBack: {
 
-              right_cToolButtonList.setChildrenState(nIndex)
-              right_cToolButtonList.setChildrenColor(nIndex)
+//              right_cToolButtonList.setChildrenState(nIndex)
+//              right_cToolButtonList.setChildrenColor(nIndex)
 
-            }
-        }
+//            }
+//        }
         CommonToolButton
         {
             width: 70;
@@ -104,12 +86,11 @@ Rectangle {    //右侧工具栏
             state: "normal";
             sTextText: "保存分割";
             nTextSize: 12;
-            nIndex: 2;
+            nIndex: 1;
             onCToolButtonIndexBack: {
-
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-
+              imageItem.saveLabel();
             }
         }
 
@@ -121,9 +102,9 @@ Rectangle {    //右侧工具栏
             sNormalImage: "images/Main/load_@2x.png";
             sHoverImage: "images/Main/load2_@2x.png";
             state: "normal";
-            sTextText: "加载标签";
+            sTextText: "保存标签";
             nTextSize: 12;
-            nIndex: 3;
+            nIndex: 2;
             onCToolButtonIndexBack: {
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
@@ -137,9 +118,9 @@ Rectangle {    //右侧工具栏
             sNormalImage: "images/Main/Update label_@2x.png";
             sHoverImage: "images/Main/Update label2_@2x.png";
             state: "normal";
-            sTextText: "更新标签";
+            sTextText: "加载标签";
             nTextSize: 12;
-            nIndex: 4;
+            nIndex: 3;
             onCToolButtonIndexBack: {
 
               right_cToolButtonList.setChildrenState(nIndex)
@@ -147,24 +128,24 @@ Rectangle {    //右侧工具栏
 
             }
         }
-        CommonToolButton
-        {
-            width: 70;
-            height: 54;
-            sPressedImage: "images/Main/Clear label2_@2x.png";
-            sNormalImage: "images/Main/Clear label_@2x.png";
-            sHoverImage: "images/Main/Clear label2_@2x.png";
-            state: "normal";
-            sTextText: "清除标签";
-            nTextSize: 12;
-            nIndex: 5;
-            onCToolButtonIndexBack: {
+//        CommonToolButton
+//        {
+//            width: 70;
+//            height: 54;
+//            sPressedImage: "images/Main/Clear label2_@2x.png";
+//            sNormalImage: "images/Main/Clear label_@2x.png";
+//            sHoverImage: "images/Main/Clear label2_@2x.png";
+//            state: "normal";
+//            sTextText: "清除标签";
+//            nTextSize: 12;
+//            nIndex: 5;
+//            onCToolButtonIndexBack: {
 
-              right_cToolButtonList.setChildrenState(nIndex)
-              right_cToolButtonList.setChildrenColor(nIndex)
+//              right_cToolButtonList.setChildrenState(nIndex)
+//              right_cToolButtonList.setChildrenColor(nIndex)
 
-            }
-        }
+//            }
+//        }
 
    }
 }

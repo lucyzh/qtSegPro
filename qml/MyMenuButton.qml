@@ -113,12 +113,7 @@ Rectangle {
         }
         onClicked:
         {
-//            if(nIndex==4)
-//            {
-////                fileDialog.selectExisting = false;
 
-//                fileDialog.open();
-//            }
         }
 
     }

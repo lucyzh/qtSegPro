@@ -10,7 +10,6 @@ Rectangle {
 
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
-        anchors.topMargin: 10;
         height: parent.height;
         spacing: 4;
         function setChildrenState(nIndex)
@@ -19,12 +18,10 @@ Rectangle {
             {
                 if(nIndex === i)
                 {
-                    console.log("111")
                     left_cToolButtonList.children[i].state = "pressed";
                 }
                 else
                 {
-                    console.log("222")
                     left_cToolButtonList.children[i].state = "normal";
                 }
             }
@@ -35,12 +32,10 @@ Rectangle {
             {
                 if(nIndex === i)
                 {
-                    console.log("111")
                     left_cToolButtonList.children[i].color = "#212121";
                 }
                 else
                 {
-                    console.log("222")
                     left_cToolButtonList.children[i].color = "#404040";
                 }
             }
@@ -87,7 +82,7 @@ Rectangle {
             height: 54;
             sPressedImage: "images/Main/brush2_@2x.png";
             sNormalImage: "images/Main/brush_@2x.png";
-            sHoverImage: "images/Main/brush2_@2x.png";
+            sHoverImage: "images/Main/bg_brush2_@2x.png";
             state: "normal";
             sTextText: "标记背景";
             nTextSize: 12;
