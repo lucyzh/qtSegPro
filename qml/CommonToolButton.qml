@@ -14,7 +14,6 @@ Rectangle {
 
     signal cToolButtonIndexBack(var nIndex);
 
-
     Image
     {
         id: cToolButtonImage;

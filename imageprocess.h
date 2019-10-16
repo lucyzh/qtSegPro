@@ -72,6 +72,7 @@ public:
 public:
 
     Q_INVOKABLE QImage openImage();
+    Q_INVOKABLE QImage openLabel();
     Q_INVOKABLE QImage processImage();
     Q_INVOKABLE void setStartPnt(QPoint e);
     Q_INVOKABLE void setEndPnt(QPoint e);
@@ -102,10 +103,12 @@ public:
     Q_INVOKABLE int updateIterCount();
 
     Q_INVOKABLE void startSeg();
+    Q_INVOKABLE void startSeg1();
     Q_INVOKABLE void saveSeg();
     Q_INVOKABLE void getfgPxls();
     Q_INVOKABLE void getbgPxls();
     Q_INVOKABLE void setImage(const Mat& _image);
+    Q_INVOKABLE void setPrMask();
 
     //------------static methods---------------
     Q_INVOKABLE static void getBinMask(const Mat& comMask, Mat& binMask);

@@ -18,6 +18,7 @@ extern QImage imageOri;
 extern QImage imageSeg;
 
 extern cv::Mat mask;
+extern cv::Mat masklabel;
 extern QPoint recStarPoint;
 extern QPoint recEndPoint;
 extern vector<cv::Point> recpoints;

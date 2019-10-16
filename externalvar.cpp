@@ -14,6 +14,7 @@ QImage imageSeg;
 QImage imageOri;
 
 cv::Mat mask;
+cv::Mat masklabel;
 Rect rect;
 QPoint recStarPoint;
 QPoint recEndPoint;

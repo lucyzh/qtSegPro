@@ -40,7 +40,7 @@ QImage ImageProcess::openImage()
                 nullptr, "open image file",
                     ".",
                     "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
-    qDebug()<<fileName;
+    qDebug()<< "filename: " << fileName << endl;
     imageRes = QImage(fileName);
     imageOri = imageRes;
     imageGlobal = imageRes;
@@ -50,6 +50,18 @@ QImage ImageProcess::openImage()
     qDebug()<<imageRes;
     qDebug()<<"imagewidth" << imagewidth << "  " <<"imageheight" << imageheight<< endl;
     return imageRes;
+}
+
+QImage ImageProcess::openLabel() {
+    qDebug("open");
+    QString maskname = QFileDialog::getOpenFileName(
+                nullptr, "open image file",
+                    ".",
+                    "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
+
+    QImage mask_user_input = QImage(maskname);
+    masklabel = QImage2cvMat(mask_user_input, true, false);
+    return mask_user_input;
 }
 
 QImage ImageProcess::processImage()
@@ -447,6 +459,20 @@ void ImageProcess::setRectInMask()
     (mask(rect)).setTo(Scalar(GC_PR_FGD));
 }
 
+void ImageProcess::setPrMask() {
+    cv::Mat saliencyMap = masklabel;
+
+    rect.x = 0;
+    rect.y = 0;
+    rect.width = image->cols - 1;
+    rect.height = image->rows - 1;
+
+    mask.create(image->size(), CV_8UC1);
+    CV_Assert(!mask.empty());
+    (mask(rect)).setTo(Scalar(GC_PR_FGD));
+    cv::compare(saliencyMap,cv::GC_FGD, mask, cv::CMP_EQ);
+}
+
 //read the image to deal with
 void ImageProcess::setImage(const Mat &_image)
 {
@@ -460,7 +486,7 @@ cv::GC_PR_BGD  == 2//表示可能是背景
 cv::GC_FGD  == 1//表示是前景
 cv::GC_PR_FGD  == 3//表示可能是前景
 */
-//seg the image with rectangle or mask
+//seg the image with rectangle or user interaction mask
 void ImageProcess::startSeg()
 {
     cv::Mat ori = QImage2cvMat(imageOri,true,false);
@@ -476,9 +502,9 @@ void ImageProcess::startSeg()
     setImage(img);
     setRectInMask();
 
-    if (img.empty() || rect.width == 0 || rect.height == 0) {
-        return;
-    }
+//    if (img.empty() || rect.width == 0 || rect.height == 0) {
+//        return;
+//    }
 
     if (fgdPxls.size()>0 || bgdPxls.size()>0) {
         setfgInMask();
@@ -514,6 +540,50 @@ void ImageProcess::startSeg()
     img.copyTo(fgd, mask);
 
     cv::Mat fgdRect = fgd(rect);
+    //imageSeg = QImage((uchar*) fgdRect.data, fgdRect.cols, fgdRect.rows, fgdRect.step, QImage::Format_RGB888);
+
+    imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);
+
+    qDebug() << "seg finished!!!" << endl;
+}
+
+//seg the image with saliency map
+void ImageProcess::startSeg1()
+{
+    cv::Mat ori = QImage2cvMat(imageOri,true,false);
+    cv::Mat img;
+    if(ori.type()==CV_8UC4){
+        cvtColor(ori,img,COLOR_BGRA2RGB);
+        qDebug() << "convert to CV_8UC3" << endl;
+    }
+    else if (ori.type()/8==CV_8UC3) {
+        ori.copyTo(img);
+    }
+
+    setImage(img);
+    setPrMask();
+
+    if (img.empty()) {
+        return;
+    }
+
+    isInitialized = false;
+    for(int i = 0; i < 6; i++) {
+        if ( isInitialized ) {
+            cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1);
+        }
+        else {
+            cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1,GC_INIT_WITH_RECT);
+            isInitialized = true;
+        }
+    }
+
+    mask = mask & 1;//&处理，保留GC_FGD, GC_PR_FGD
+    cv::compare(mask,cv::GC_FGD, mask, cv::CMP_EQ);
+    cv::Mat fgd(ori.size(), CV_8UC3, cv::Scalar(0,0,0));
+    img.copyTo(fgd, mask);
+
+    //cv::Mat fgdRect = fgd(rect);
     //imageSeg = QImage((uchar*) fgdRect.data, fgdRect.cols, fgdRect.rows, fgdRect.step, QImage::Format_RGB888);
 
     imageSeg = QImage((uchar*) fgd.data, fgd.cols, fgd.rows, fgd.step, QImage::Format_RGB888);

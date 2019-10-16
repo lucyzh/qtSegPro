@@ -20,8 +20,6 @@ Window {
 
     }
 
-
-
     flags: Qt.CursorShape |  Qt.WindowSystemMenuHint |Qt.FramelessWindowHint |  Qt.WindowMinimizeButtonHint | Qt.Window;
 
 

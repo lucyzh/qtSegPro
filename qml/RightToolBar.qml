@@ -55,27 +55,11 @@ Rectangle {    //右侧工具栏
             onCToolButtonIndexBack: {
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-              imageItem.startSeg()
+              //imageItem.startSeg()
+              imageItem.startSeg1()
             }
         }
-//        CommonToolButton
-//        {
-//            width: 70;
-//            height: 54;
-//            sPressedImage: "images/Main/Update2_@2x.png";
-//            sNormalImage: "images/Main/Update_@2x.png";
-//            sHoverImage: "images/Main/Update2_@2x.png";
-//            state: "normal";
-//            sTextText: "更新分割";
-//            nTextSize: 12;
-//            nIndex: 1;
-//            onCToolButtonIndexBack: {
 
-//              right_cToolButtonList.setChildrenState(nIndex)
-//              right_cToolButtonList.setChildrenColor(nIndex)
-
-//            }
-//        }
         CommonToolButton
         {
             width: 70;
@@ -122,30 +106,11 @@ Rectangle {    //右侧工具栏
             nTextSize: 12;
             nIndex: 3;
             onCToolButtonIndexBack: {
-
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
-
+              imageItem.openLabel();
             }
         }
-//        CommonToolButton
-//        {
-//            width: 70;
-//            height: 54;
-//            sPressedImage: "images/Main/Clear label2_@2x.png";
-//            sNormalImage: "images/Main/Clear label_@2x.png";
-//            sHoverImage: "images/Main/Clear label2_@2x.png";
-//            state: "normal";
-//            sTextText: "清除标签";
-//            nTextSize: 12;
-//            nIndex: 5;
-//            onCToolButtonIndexBack: {
-
-//              right_cToolButtonList.setChildrenState(nIndex)
-//              right_cToolButtonList.setChildrenColor(nIndex)
-
-//            }
-//        }
 
    }
 }
