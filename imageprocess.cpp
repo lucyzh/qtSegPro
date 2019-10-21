@@ -462,15 +462,41 @@ void ImageProcess::setRectInMask()
 void ImageProcess::setPrMask() {
     cv::Mat saliencyMap = masklabel;
 
-    rect.x = 0;
-    rect.y = 0;
-    rect.width = image->cols - 1;
-    rect.height = image->rows - 1;
+//    rect.x = 30;
+//    rect.y = 30;
+//    rect.width = image->cols - 1;
+//    rect.height = image->rows - 1;
+//    mask.create(image->size(), CV_8UC1);
+//    CV_Assert(!mask.empty());
+//    (mask(rect)).setTo(Scalar(GC_PR_FGD));
+//    cv::compare(saliencyMap,cv::GC_FGD, mask, cv::CMP_EQ);
+    rect.x = 10;
+    rect.y = 10;
+    rect.width = 300;
+    rect.height = 280;
 
     mask.create(image->size(), CV_8UC1);
     CV_Assert(!mask.empty());
-    (mask(rect)).setTo(Scalar(GC_PR_FGD));
-    cv::compare(saliencyMap,cv::GC_FGD, mask, cv::CMP_EQ);
+    mask.setTo(GC_BGD);//0
+    (mask(rect)).setTo(Scalar(GC_PR_FGD));//3
+    int m = saliencyMap.rows;
+    int n = saliencyMap.cols;
+    int xLeft = rect.x;
+    int xRight = rect.x + rect.width;
+    int yTop = rect.y;
+    int yBottom = rect.y + rect.height;
+    for(int i = 0; i < m; i++) {
+        for(int j = 0; j < n; j++) {
+            if (i > xLeft && i < xRight && j > yTop && j < yBottom) {
+                if (saliencyMap.at<int>(i,j) == 0) {
+                    mask.at<int>(i,j) = 2;
+                }//useless
+                else if (saliencyMap.at<int>(i,j) == 1) {
+                    mask.at<int>(i,j) = 1;
+                }
+            }
+        }
+    }
 }
 
 //read the image to deal with
@@ -489,6 +515,8 @@ cv::GC_PR_FGD  == 3//表示可能是前景
 //seg the image with rectangle or user interaction mask
 void ImageProcess::startSeg()
 {
+    //string imgName = fileName.toStdString();
+
     cv::Mat ori = QImage2cvMat(imageOri,true,false);
     cv::Mat img;
     if(ori.type()==CV_8UC4){

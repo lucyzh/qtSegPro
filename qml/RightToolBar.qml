@@ -56,7 +56,7 @@ Rectangle {    //右侧工具栏
               right_cToolButtonList.setChildrenState(nIndex)
               right_cToolButtonList.setChildrenColor(nIndex)
               //imageItem.startSeg()
-              imageItem.startSeg1()
+              imageItem.startSeg()
             }
         }
 
