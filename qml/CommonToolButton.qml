@@ -22,6 +22,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
         source: sNormalImage;
+        anchors.topMargin: 10;
     }
 
     Text {
@@ -111,7 +112,6 @@ Rectangle {
         }
 
     }
-
 
     states: [
         State {

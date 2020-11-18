@@ -39,7 +39,7 @@ QImage ImageProcess::openImage()
     fileName = QFileDialog::getOpenFileName(
                 nullptr, "open image file",
                     ".",
-                    "Image files (*.bmp *.jpg *.pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
+                    "Image files (*.bmp *.jpg * *.jpeg .pbm *.pgm *.png *.ppm *.xbm *.xpm);;All files (*.*)");
     qDebug()<< "filename: " << fileName << endl;
     imageRes = QImage(fileName);
     imageOri = imageRes;
@@ -462,41 +462,43 @@ void ImageProcess::setRectInMask()
 void ImageProcess::setPrMask() {
     cv::Mat saliencyMap = masklabel;
 
-//    rect.x = 30;
-//    rect.y = 30;
-//    rect.width = image->cols - 1;
-//    rect.height = image->rows - 1;
-//    mask.create(image->size(), CV_8UC1);
-//    CV_Assert(!mask.empty());
-//    (mask(rect)).setTo(Scalar(GC_PR_FGD));
-//    cv::compare(saliencyMap,cv::GC_FGD, mask, cv::CMP_EQ);
-    rect.x = 10;
-    rect.y = 10;
-    rect.width = 300;
-    rect.height = 280;
-
+    rect.x = 30;
+    rect.y = 30;
+    rect.width = image->cols - 1;
+    rect.height = image->rows - 1;
     mask.create(image->size(), CV_8UC1);
     CV_Assert(!mask.empty());
-    mask.setTo(GC_BGD);//0
-    (mask(rect)).setTo(Scalar(GC_PR_FGD));//3
-    int m = saliencyMap.rows;
-    int n = saliencyMap.cols;
-    int xLeft = rect.x;
-    int xRight = rect.x + rect.width;
-    int yTop = rect.y;
-    int yBottom = rect.y + rect.height;
-    for(int i = 0; i < m; i++) {
-        for(int j = 0; j < n; j++) {
-            if (i > xLeft && i < xRight && j > yTop && j < yBottom) {
-                if (saliencyMap.at<int>(i,j) == 0) {
-                    mask.at<int>(i,j) = 2;
-                }//useless
-                else if (saliencyMap.at<int>(i,j) == 1) {
-                    mask.at<int>(i,j) = 1;
-                }
-            }
-        }
-    }
+    (mask(rect)).setTo(Scalar(GC_PR_FGD));
+    cv::compare(saliencyMap,cv::GC_FGD, mask, cv::CMP_EQ);
+    imwrite("/Users/lucy/Desktop/testDemo.png", mask);
+    qDebug() << "保存mask成功！" << endl;
+//    rect.x = 10;
+//    rect.y = 10;
+//    rect.width = 300;
+//    rect.height = 280;
+
+//    mask.create(image->size(), CV_8UC1);
+//    CV_Assert(!mask.empty());
+//    mask.setTo(GC_BGD);//0
+//    (mask(rect)).setTo(Scalar(GC_PR_FGD));//3
+//    int m = saliencyMap.rows;
+//    int n = saliencyMap.cols;
+//    int xLeft = rect.x;
+//    int xRight = rect.x + rect.width;
+//    int yTop = rect.y;
+//    int yBottom = rect.y + rect.height;
+//    for(int i = 0; i < m; i++) {
+//        for(int j = 0; j < n; j++) {
+//            if (i > xLeft && i < xRight && j > yTop && j < yBottom) {
+//                if (saliencyMap.at<int>(i,j) == 0) {
+//                    mask.at<int>(i,j) = 2;
+//                }//useless
+//                else if (saliencyMap.at<int>(i,j) == 1) {
+//                    mask.at<int>(i,j) = 1;
+//                }
+//            }
+//        }
+//    }
 }
 
 //read the image to deal with
@@ -537,6 +539,7 @@ void ImageProcess::startSeg()
     if (fgdPxls.size()>0 || bgdPxls.size()>0) {
         setfgInMask();
         setbgInMask();
+        imwrite("/Users/lucy/Desktop/maskDemo.png", mask); // 分割采用的mask
         isInitialized = false;
         qDebug() << "seg with mask" << endl;
         for(int i = 0; i < 6; i++) {
@@ -576,7 +579,7 @@ void ImageProcess::startSeg()
 }
 
 //seg the image with saliency map
-void ImageProcess::startSeg1()
+void ImageProcess::startSegWithSaliencyMap()
 {
     cv::Mat ori = QImage2cvMat(imageOri,true,false);
     cv::Mat img;
@@ -596,7 +599,7 @@ void ImageProcess::startSeg1()
     }
 
     isInitialized = false;
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 3; i++) {
         if ( isInitialized ) {
             cv::grabCut(*image, mask,rect,bgmodel,fgmodel,1);
         }
@@ -621,7 +624,7 @@ void ImageProcess::startSeg1()
 
 void ImageProcess::saveSeg() {
     if(!mask.empty()) {
-        //imwrite("/Users/lucy/Desktop/1.jpg", mask);
+        imwrite("/Users/lucy/Desktop/maskDemo.jpg", mask);
     }
 }
 

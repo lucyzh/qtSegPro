@@ -11,10 +11,7 @@ Window {
     height: 720;
     minimumWidth: 640;
     minimumHeight: 360;
-    //title: qsTr("IPFW");
-   // color: "transparent"
 
-    //    color: "#272727";
     ImageProItem{
         id:imageItem;
 
@@ -22,14 +19,13 @@ Window {
 
     flags: Qt.CursorShape |  Qt.WindowSystemMenuHint |Qt.FramelessWindowHint |  Qt.WindowMinimizeButtonHint | Qt.Window;
 
-
-    TitleBar    //软件标题title
+    // 软件标题
+    TitleBar
     {
         id: titleBar_mainWin;
         anchors.top: parent.top;
         width: parent.width;
-        height: 40;
-       // color: "#373737"
+        height: 24;
     }
 
     MyMenuBar    //打开、编辑、帮助工具栏
@@ -38,19 +34,19 @@ Window {
         z:0.3
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 40;
+        anchors.topMargin: 22;
         width: parent.width;
-        height: 40;
+        height: 30;
         color: "#999999"
     }
 
     ImageOpen  //打开图片后，图片显示的区域
-    {  //
+    {
         id: imageOpen;
         z:0.1;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 80;
+        anchors.topMargin: 50;
         anchors.leftMargin: 70;
 
         MouseArea
@@ -135,11 +131,8 @@ Window {
                 imageItem.setEndPnt(Qt.point(mouseX,mouseY))
                 imageItem.pntpaintend()
                 imageItem.getbgPxls();
-
             }
-
         }
-
     }
     SegResultRect
     {  //  分割结果显示区域
@@ -147,7 +140,7 @@ Window {
         z:0.1;
         anchors.left: parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 80;
+        anchors.topMargin: 50;
         anchors.leftMargin:  parent.width / 2 ;
     }
 
@@ -157,11 +150,10 @@ Window {
         z:0.2;
         anchors.left:parent.left;
         anchors.top: parent.top;
-        anchors.topMargin: 80;
+        anchors.topMargin: 50;
         width: 70;
         height: parent.height;
         color: "#404040";
-
     }
     RightToolBar       //开始分割、更新分割等按钮
     {
@@ -169,12 +161,11 @@ Window {
         z:0.2;
         anchors.right:parent.right;
         anchors.top: parent.top;
-        anchors.topMargin: 80;
+        anchors.topMargin: 50;
         width: 70;
         height: parent.height;
         color: "#404040";
     }
-
 
     StateBar
     {
@@ -186,7 +177,6 @@ Window {
         height: 30;
         color: "#777777";
     }
-
 
     //BackGround
     Image
@@ -200,8 +190,6 @@ Window {
     MouseArea {
 
         id:allMouseArea
-
-        //        property bool closeAll: false;
 
         acceptedButtons: Qt.LeftButton
         hoverEnabled: true

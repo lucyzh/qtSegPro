@@ -11,14 +11,9 @@ Rectangle {
     property var sNormalImage: "";
     property var sHoverImage: "";
     property var sTextText: "";
-    property var nTextSize: 12;
+    property var nTextSize: 14;
     property var nIndex: 0;
-
-
-
-
     signal menuButtonIndexBack(var nIndex);
-
 
     Image
     {
@@ -26,7 +21,6 @@ Rectangle {
         anchors.fill: parent;
         source: sNormalImage;
     }
-
 
     Text {
         id: menuButtonText;x: 0;
@@ -40,7 +34,6 @@ Rectangle {
         font.family: "微软雅黑";
         font.pixelSize: nTextSize;
         font.letterSpacing: 1;
-//        font.bold: true;
         text: sTextText;
     }
 
@@ -87,7 +80,6 @@ Rectangle {
         onReleased:
         {
             menuButtonIndexBack(nIndex);
-//            console.log("release->menuButton");
             if(nIndex>3)
             {
                 rect_MenuFile.visible = false;
@@ -101,14 +93,12 @@ Rectangle {
         {
             if(menu_Button.state === "normal")
                 menu_Button.state = "hover";
-//            console.log("enter->menuButton");
             menu_Button.color = "#666666";
         }
         onExited:
         {
             if(menu_Button.state === "hover")
                 menu_Button.state = "normal";
-//            console.log("exit->menuButton");
             menu_Button.color = "#474747";
         }
         onClicked:
@@ -153,6 +143,4 @@ Rectangle {
             }
         }
     ]
-
-
 }

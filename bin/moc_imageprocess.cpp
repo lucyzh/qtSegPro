@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'imageprocess.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.0)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'imageprocess.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.0. It"
+#error "This file was generated using the moc from 5.14.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ImageProcess_t {
     QByteArrayData data[47];
-    char stringdata0[481];
+    char stringdata0[495];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -67,18 +67,18 @@ QT_MOC_LITERAL(31, 337, 8), // "nextIter"
 QT_MOC_LITERAL(32, 346, 9), // "showImage"
 QT_MOC_LITERAL(33, 356, 15), // "updateIterCount"
 QT_MOC_LITERAL(34, 372, 8), // "startSeg"
-QT_MOC_LITERAL(35, 381, 9), // "startSeg1"
-QT_MOC_LITERAL(36, 391, 7), // "saveSeg"
-QT_MOC_LITERAL(37, 399, 9), // "getfgPxls"
-QT_MOC_LITERAL(38, 409, 9), // "getbgPxls"
-QT_MOC_LITERAL(39, 419, 8), // "setImage"
-QT_MOC_LITERAL(40, 428, 3), // "Mat"
-QT_MOC_LITERAL(41, 432, 6), // "_image"
-QT_MOC_LITERAL(42, 439, 9), // "setPrMask"
-QT_MOC_LITERAL(43, 449, 10), // "getBinMask"
-QT_MOC_LITERAL(44, 460, 7), // "comMask"
-QT_MOC_LITERAL(45, 468, 4), // "Mat&"
-QT_MOC_LITERAL(46, 473, 7) // "binMask"
+QT_MOC_LITERAL(35, 381, 23), // "startSegWithSaliencyMap"
+QT_MOC_LITERAL(36, 405, 7), // "saveSeg"
+QT_MOC_LITERAL(37, 413, 9), // "getfgPxls"
+QT_MOC_LITERAL(38, 423, 9), // "getbgPxls"
+QT_MOC_LITERAL(39, 433, 8), // "setImage"
+QT_MOC_LITERAL(40, 442, 3), // "Mat"
+QT_MOC_LITERAL(41, 446, 6), // "_image"
+QT_MOC_LITERAL(42, 453, 9), // "setPrMask"
+QT_MOC_LITERAL(43, 463, 10), // "getBinMask"
+QT_MOC_LITERAL(44, 474, 7), // "comMask"
+QT_MOC_LITERAL(45, 482, 4), // "Mat&"
+QT_MOC_LITERAL(46, 487, 7) // "binMask"
 
     },
     "ImageProcess\0openImage\0\0openLabel\0"
@@ -91,9 +91,10 @@ QT_MOC_LITERAL(46, 473, 7) // "binMask"
     "setRectInMask\0setfgInMask\0setbgInMask\0"
     "convertQPoint2cvPoint\0cv::Point\0reset\0"
     "nextIter\0showImage\0updateIterCount\0"
-    "startSeg\0startSeg1\0saveSeg\0getfgPxls\0"
-    "getbgPxls\0setImage\0Mat\0_image\0setPrMask\0"
-    "getBinMask\0comMask\0Mat&\0binMask"
+    "startSeg\0startSegWithSaliencyMap\0"
+    "saveSeg\0getfgPxls\0getbgPxls\0setImage\0"
+    "Mat\0_image\0setPrMask\0getBinMask\0comMask\0"
+    "Mat&\0binMask"
 };
 #undef QT_MOC_LITERAL
 
@@ -229,7 +230,7 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 26: { int _r = _t->updateIterCount();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = std::move(_r); }  break;
         case 27: _t->startSeg(); break;
-        case 28: _t->startSeg1(); break;
+        case 28: _t->startSegWithSaliencyMap(); break;
         case 29: _t->saveSeg(); break;
         case 30: _t->getfgPxls(); break;
         case 31: _t->getbgPxls(); break;
@@ -242,7 +243,7 @@ void ImageProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
 }
 
 QT_INIT_METAOBJECT const QMetaObject ImageProcess::staticMetaObject = { {
-    &QQuickItem::staticMetaObject,
+    QMetaObject::SuperData::link<QQuickItem::staticMetaObject>(),
     qt_meta_stringdata_ImageProcess.data,
     qt_meta_data_ImageProcess,
     qt_static_metacall,

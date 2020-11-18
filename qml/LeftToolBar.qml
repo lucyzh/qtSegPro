@@ -2,9 +2,10 @@ import QtQuick 2.0
 
 Rectangle {
 
-    id: leftToolBar;   //左侧工具栏
+    id: leftToolBar;
 
-    Column   //左边工具栏列表
+    //左边工具栏列表
+    Column
     {
         id: left_cToolButtonList;
 
@@ -70,7 +71,6 @@ Rectangle {
             nTextSize: 12;
             nIndex: 1;
             onCToolButtonIndexBack: {
-
               left_cToolButtonList.setChildrenState(nIndex)
               left_cToolButtonList.setChildrenColor(nIndex)
             }
@@ -82,7 +82,7 @@ Rectangle {
             height: 54;
             sPressedImage: "images/Main/brush2_@2x.png";
             sNormalImage: "images/Main/brush_@2x.png";
-            sHoverImage: "images/Main/bg_brush2_@2x.png";
+            sHoverImage: "images/Main/brush2_@2x.png";
             state: "normal";
             sTextText: "标记背景";
             nTextSize: 12;

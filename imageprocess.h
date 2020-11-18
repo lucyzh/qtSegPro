@@ -103,7 +103,7 @@ public:
     Q_INVOKABLE int updateIterCount();
 
     Q_INVOKABLE void startSeg();
-    Q_INVOKABLE void startSeg1();
+    Q_INVOKABLE void startSegWithSaliencyMap();
     Q_INVOKABLE void saveSeg();
     Q_INVOKABLE void getfgPxls();
     Q_INVOKABLE void getbgPxls();

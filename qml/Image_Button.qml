@@ -25,7 +25,6 @@ Rectangle {
         source: sNormalImage;
     }
 
-
     Text {
         id: cButtonText;
         width: parent.width;
@@ -39,7 +38,6 @@ Rectangle {
         font.family: "微软雅黑";
         font.pixelSize: nTextSize;
         font.letterSpacing: 1;
-//        font.bold: true;
         text: sTextText;
     }
 

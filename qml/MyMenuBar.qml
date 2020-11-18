@@ -18,29 +18,26 @@ Rectangle {
         id: row_menuBarButtonList;
 
         anchors.left: parent.left;
-        anchors.leftMargin: 1;
         anchors.top: parent.top;
         height: parent.height;
         spacing: 1;
-
 
         MyMenuButton
         {
             id:fileButton_Menu;
             width: 76;
-            height: 40;
-            nTextSize: 18;
+            height: 30;
+            nTextSize: 16;
             sTextText: "文件"
             state: "normal";
             nIndex: 0;
-
         }
         MyMenuButton
         {
             id:editButton_Menu;
             width: 76;
-            height: 40;
-            nTextSize: 18;
+            height: 30;
+            nTextSize: 16;
             sTextText: "编辑"
             state: "normal";
             nIndex: 1;
@@ -49,25 +46,24 @@ Rectangle {
         {
             id:helpButton_Menu;
             width: 76;
-            height: 40;
-            nTextSize: 18;
+            height: 30;
+            nTextSize: 16;
             sTextText: "帮助"
             state: "normal";
             nIndex: 2;
         }
-
-
     }
 
+    // 文件下拉框
     Rectangle
     {
         id: rect_MenuFile;
         visible: false;
 
-        x:fileButton_Menu.x + 4;
+        x:fileButton_Menu.x;
         y:fileButton_Menu.y + menuBar_mainWin.height;
         width: 200;
-        height: 30 * 4 +6;
+        height: 30 * 4 + 6;
         color: "transparent";
 
         Column
@@ -80,23 +76,20 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
+                nTextSize: 14;
                 sTextText: "打开";
                 state: "normal";
                 nIndex: 4;
                 onMenuButtonIndexBack:
                 {
-                    //            qDebug("clicked");
-                    //                    imageItem.openImage();
                     imageItem.openImage();
-                    //            imageItem.processImage();
                 }
             }
             MyMenuButton
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
+                nTextSize: 14;
                 sTextText: "保存";
                 state: "normal";
                 nIndex: 5;
@@ -105,7 +98,7 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
+                nTextSize: 14;
                 sTextText: "另存为";
                 state: "normal";
                 nIndex: 6;
@@ -114,7 +107,7 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
+                nTextSize: 14;
                 sTextText: "退出";
                 state: "normal";
                 nIndex: 7;
@@ -122,16 +115,16 @@ Rectangle {
         }
     }
 
-
+    // 编辑下拉框
     Rectangle
     {
         id: rect_MenuEdit;
         visible: false;
 
-        x:editButton_Menu.x + 4;
+        x:editButton_Menu.x;
         y:editButton_Menu.y + menuBar_mainWin.height;
         width: 200;
-        height: 30 * 4 +6;
+        height: 30 * 4 + 6;
         color: "transparent";
 
         Column
@@ -144,7 +137,6 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
                 sTextText: "撤销";
                 state: "normal";
                 nIndex: 8;
@@ -159,7 +151,6 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
                 sTextText: "重做";
                 state: "normal";
                 nIndex: 9;
@@ -172,12 +163,13 @@ Rectangle {
         }
     }
 
+    // 帮助下拉框
     Rectangle
     {
         id: rect_MenuTool;
         visible: false;
 
-        x:helpButton_Menu.x +4;
+        x:helpButton_Menu.x;
         y:helpButton_Menu.y + menuBar_mainWin.height;
         width: 200;
         height: 30 * 3 +6;
@@ -193,7 +185,6 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
                 sTextText: "软件使用说明";
                 state: "normal";
                 nIndex: 12;
@@ -202,7 +193,6 @@ Rectangle {
             {
                 width: 200;
                 height: 30;
-                nTextSize: 16;
                 sTextText: "版本信息";
                 state: "normal";
                 nIndex: 13;

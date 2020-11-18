@@ -59,8 +59,6 @@ Rectangle {
         }
     }
 
-
-
     function onMenuRight()
     {
         menuRightTranslate.x = bMenuShown ? 230: 0;

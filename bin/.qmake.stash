@@ -42,3 +42,4 @@ QMAKE_CXX.INCDIRS = \
 QMAKE_CXX.LIBDIRS = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib
 QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
 QMAKE_XCODE_VERSION = 11.0
+QMAKE_MAC_SDK.macosx10.15.SDKVersion = 10.15

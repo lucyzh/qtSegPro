@@ -6,7 +6,8 @@ Rectangle{
     color: "#C1C1C1";
     border.color: "white";
     height: parent.height-100;
-    width: parent.width / 2-70;
+    width: parent.width / 2- 70;
+    anchors.bottom: parent.bottom;
     ImageProItem{
         id:imageItem
     }
@@ -33,9 +34,6 @@ Rectangle{
         {
             imgRes.source = "";
             imgRes.source = "image://imgProvider/img"
-//            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<Fresh");
-//            imageItem.processImage();
-//            console.log("---------------------------Fresh");
         }
     }
 }
