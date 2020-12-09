@@ -24,7 +24,7 @@ Rectangle{
         font.pixelSize: 16;
         font.letterSpacing: 1;
         font.bold: true;
-        text: "中华文化元素交互分割软件";
+        text: "中华文化元素分割系统";
     }
 
     Row

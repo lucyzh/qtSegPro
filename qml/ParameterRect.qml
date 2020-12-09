@@ -1,118 +1,227 @@
 import QtQuick 2.0
 import Imagepro 1.1
+import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
+import QtQuick.Layouts 1.0
 
 Rectangle{  //参数1
     id: parameterRect;
-    color: "transparent";
+    color: "#e1e1e1";
 
-//    ImageProItem{
-//        id:imageItem
-//    }
+    GroupBox
+    {
+        title: "分割模式";
+        id: gbMode;
+        z: 0.2;
+        width: 100;
+        height: 90;
 
-    Text {
-        id: menuButtonText;
-        width: 50;
-        height: parent.height;
-        anchors.left: parent.left;
-        verticalAlignment: Text.AlignVCenter;
-        wrapMode: Text.WordWrap;
-        color: "#ffffff";
-        font.family: "微软雅黑";
-        font.pixelSize: 15;
-        font.letterSpacing: 1;
-        text: "参数1: ";
-    }
-    Rectangle{
-        id: mytextone;
-        color: "white";
-        height: 40
-        width: 150
-        anchors.left: parent.left;
-        anchors.leftMargin: 60;
-
-    TextInput{
-        id:parameterone;
-        width: 80;
-        height: 30;
-        //anchors.centerIn: parent
-        color: "black"
-        font.pixelSize: 15
-        maximumLength: 3  //最大输入长度，单位是字符，默认32767
-        font.bold: false //加粗，默认false
-        font.italic: false //是否用斜体,默认false
-        font.letterSpacing: 0 //字母之间距离，正表示增加，负表示缩小，0表示默认距离
-        font.wordSpacing: 0 //单词之间的距离，说明同上行
-        font.strikeout: false //设置字体是否有删除线，默认false
-        font.underline: false //设置字体是否有下划线，默认false
-        activeFocusOnPress: true //默认true,鼠标点击是否能输入。
-        autoScroll: true //文本长度大于宽度时是否滚动，默认true
-        //readOnly: true  //设置只读
-        //inputMask: "you" //替代输入，相当text显示you，个人理解
-        //cursorDelegate: comp_text//光标也就是输入区域的高显，该委托起点是输入的终点
-        //cursorVisible: false
-        //cursorPosition: 200
-        //echoMode: TextInput.Password //显示密码符而不是输入的字符
-        //echoMode: TextInput.Normal //默认的显示输入的字符
-        //echoMode: TextInput.NoEcho //什么都不显示
-        //echoMode: TextInput.PasswordEchoOnEdit
-        //passwordCharacter: "*k" //设置模式为密码时显示的字符，第一个字母有效
-        //设置文本的大小写
-        //font.capitalization: Font.MixedCase //不使用大小写改变
-        //font.capitalization: Font.AllUppercase //所有的都大写
-        //font.capitalization: Font.AllLowercase //所有的都小写
-        //font.capitalization: Font.SmallCaps //使用小大写，
-        //font.capitalization: Font.Capitalize  //单词的第一个字母大写
-        //font.weight: Font.Light
-        //font.weight: Font.Normal
-        //font.weight: Font.DemiBold
-        //font.weight: Font.Bold
-        //font.weight: Font.Black
-        //文本的对齐方式，顾名思义
-         //horizontalAlignment: TextInput.AlignHCenter
-         verticalAlignment: TextInput.AlignVCenter
-         horizontalAlignment: TextInput.AlignLeft
-        //horizontalAlignment: TextInput.AlignRight
-        selectByMouse: true //是否可以选择文本
-        //选择文本的方式，只有selectByMouse为真才有效
-        //mouseSelectionMode: TextInput.SelectCharacters //一个字符为单位选择，默认
-        //mouseSelectionMode: TextInput.SelectWords      //一个单词为单位选择
-        selectedTextColor: "black" //设置选择文本的字体颜色
-        selectionColor: "#00ccdd"    //设置选择框的颜色
-        text:"12" //输入文本默认显示的，可以修改和增加
-        onAccepted: console.log("accepted") //当按下回车键触发该信号
-        //需要注意的是当设置了验证器validator或者掩码inputMask时，只有在输入被接受的情况下才能触发
-        //validator: IntValidator{bottom: 5;top:120}
-        //只接受1-20之内的整数
-        validator: DoubleValidator{
-            bottom: 0.0
-            top:1.0
-            decimals: 0 //保留小数点位数
-            //notation: DoubleValidator.StandardNotation
-            //notation: DoubleValidator.ScientificNotation
-        }
-        onTextChanged: {
-            imageItem.getModelParam(parameterone.text);
+        Rectangle {
+            id: clRect;
+            color: "transparent";
+            anchors.left: parent.left+20;
+            anchors.top: parent.top;
+            ColumnLayout {
+                ExclusiveGroup {id: segMode}
+                RadioButton {
+                    id: manualMode;
+                    text: "交互分割";
+                    checked: true;
+                    exclusiveGroup: segMode;
+                }
+                RadioButton {
+                    id: autoMode;
+                    text: "自动分割";
+                    exclusiveGroup: segMode;
+                }
+            }
         }
     }
-}
-    Image    //增加按钮
-    {
-        id: increaseone;
-        width: 28;
-        height: 18.5;
-        anchors.right: parent.right;
-        source: "images/Main/increase_@2x.png";
-    }
-    Image    //减少按钮
-    {
-        id: minusone;
-        width: 28;
-        height: 18.5;
-        anchors.right: parent.right;
-        anchors.top:parent.top;
+
+    // 功能按钮区
+    Rectangle {
+        id: funcBtns;
+        anchors.left: gbMode.right;
+        anchors.top: gbMode.top;
+        anchors.leftMargin: 20;
         anchors.topMargin: 20;
-        source: "images/Main/minus_@2x.png";
+        color: "transparent";
+        width: 100;
+        height: 80;
+
+        // LSGMM自动分割算法功能按钮
+        Button {
+            id: lsgmm;
+            anchors.top: parent.top+10;
+            width: 80;
+            height: 30;
+            Text {
+                text: "LSGMM";
+                font.pixelSize: 12;
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.topMargin: 10;
+                anchors.leftMargin: 17;
+                horizontalAlignment: Text.AlignHCenter;
+                verticalAlignment: Text.AlignVCenter;
+            }
+        }
+
+        // BSIS自动分割算法功能按钮
+        Button {
+            id: bsis;
+            anchors.left: parent.left;
+            anchors.top: parent.top;
+            anchors.topMargin: 30;
+            width: 80;
+            height: 30;
+            Text {
+                text: "BSIS";
+                font.pixelSize: 12;
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.topMargin: 10;
+                anchors.leftMargin: 24;
+                horizontalAlignment: Text.AlignHCenter;
+                verticalAlignment: Text.AlignVCenter;
+            }
+        }
+
+        Button {
+            id: saliencyMapBtn;
+            anchors.top: lsgmm.top;
+            anchors.left: lsgmm.right;
+            width: 80;
+            height: 30;
+            Text {
+                text: "生成显著图";
+                font.pixelSize: 12;
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.topMargin: 8;
+                anchors.leftMargin: 10;
+                horizontalAlignment: Text.AlignHCenter;
+                verticalAlignment: Text.AlignVCenter;
+            }
+        }
+
+        Button {
+            id: maskBtn;
+            anchors.left: bsis.right;
+            anchors.top: parent.top;
+            anchors.topMargin: 30;
+            width: 80;
+            height: 30;
+            Text {
+                text: "生成掩膜";
+                font.pixelSize: 12;
+                anchors.top: parent.top;
+                anchors.left: parent.left;
+                anchors.topMargin: 8;
+                anchors.leftMargin: 14;
+                horizontalAlignment: Text.AlignHCenter;
+                verticalAlignment: Text.AlignVCenter;
+            }
+        }
     }
+
+ /*
+    date: 2020.12.09
+    auth: lei zhao
+    comment: comment the code of manual seg params rect,
+    and change the control for both manual and auto seg.
+*/
+//    Rectangle{
+//        id: mytextone;
+//        color: "white";
+//        height: 40
+//        width: 150
+//        anchors.left: parent.left;
+//        anchors.leftMargin: 60;
+
+//    TextInput{
+//        id:parameterone;
+//        width: 80;
+//        height: 30;
+//        //anchors.centerIn: parent
+//        color: "black"
+//        font.pixelSize: 15
+//        maximumLength: 3  //最大输入长度，单位是字符，默认32767
+//        font.bold: false //加粗，默认false
+//        font.italic: false //是否用斜体,默认false
+//        font.letterSpacing: 0 //字母之间距离，正表示增加，负表示缩小，0表示默认距离
+//        font.wordSpacing: 0 //单词之间的距离，说明同上行
+//        font.strikeout: false //设置字体是否有删除线，默认false
+//        font.underline: false //设置字体是否有下划线，默认false
+//        activeFocusOnPress: true //默认true,鼠标点击是否能输入。
+//        autoScroll: true //文本长度大于宽度时是否滚动，默认true
+//        //readOnly: true  //设置只读
+//        //inputMask: "you" //替代输入，相当text显示you，个人理解
+//        //cursorDelegate: comp_text//光标也就是输入区域的高显，该委托起点是输入的终点
+//        //cursorVisible: false
+//        //cursorPosition: 200
+//        //echoMode: TextInput.Password //显示密码符而不是输入的字符
+//        //echoMode: TextInput.Normal //默认的显示输入的字符
+//        //echoMode: TextInput.NoEcho //什么都不显示
+//        //echoMode: TextInput.PasswordEchoOnEdit
+//        //passwordCharacter: "*k" //设置模式为密码时显示的字符，第一个字母有效
+//        //设置文本的大小写
+//        //font.capitalization: Font.MixedCase //不使用大小写改变
+//        //font.capitalization: Font.AllUppercase //所有的都大写
+//        //font.capitalization: Font.AllLowercase //所有的都小写
+//        //font.capitalization: Font.SmallCaps //使用小大写，
+//        //font.capitalization: Font.Capitalize  //单词的第一个字母大写
+//        //font.weight: Font.Light
+//        //font.weight: Font.Normal
+//        //font.weight: Font.DemiBold
+//        //font.weight: Font.Bold
+//        //font.weight: Font.Black
+//        //文本的对齐方式，顾名思义
+//         //horizontalAlignment: TextInput.AlignHCenter
+//         verticalAlignment: TextInput.AlignVCenter
+//         horizontalAlignment: TextInput.AlignLeft
+//        //horizontalAlignment: TextInput.AlignRight
+//        selectByMouse: true //是否可以选择文本
+//        //选择文本的方式，只有selectByMouse为真才有效
+//        //mouseSelectionMode: TextInput.SelectCharacters //一个字符为单位选择，默认
+//        //mouseSelectionMode: TextInput.SelectWords      //一个单词为单位选择
+//        selectedTextColor: "black" //设置选择文本的字体颜色
+//        selectionColor: "#00ccdd"    //设置选择框的颜色
+//        text:"12" //输入文本默认显示的，可以修改和增加
+//        onAccepted: console.log("accepted") //当按下回车键触发该信号
+//        //需要注意的是当设置了验证器validator或者掩码inputMask时，只有在输入被接受的情况下才能触发
+//        //validator: IntValidator{bottom: 5;top:120}
+//        //只接受1-20之内的整数
+//        validator: DoubleValidator{
+//            bottom: 0.0
+//            top:1.0
+//            decimals: 0 //保留小数点位数
+//            //notation: DoubleValidator.StandardNotation
+//            //notation: DoubleValidator.ScientificNotation
+//        }
+//        onTextChanged: {
+//            imageItem.getModelParam(parameterone.text);
+//        }
+//    }
+//}
+//    Image    //增加按钮
+//    {
+//        id: increaseone;
+//        width: 28;
+//        height: 18.5;
+//        anchors.right: parent.right;
+//        source: "images/Main/increase_@2x.png";
+//    }
+//    Image    //减少按钮
+//    {
+//        id: minusone;
+//        width: 28;
+//        height: 18.5;
+//        anchors.right: parent.right;
+//        anchors.top:parent.top;
+//        anchors.topMargin: 20;
+//        source: "images/Main/minus_@2x.png";
+//    }
 
 
 

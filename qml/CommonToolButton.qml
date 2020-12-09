@@ -9,7 +9,7 @@ Rectangle {
     property var sNormalImage: "";
     property var sHoverImage: "";
     property var sTextText: "";
-    property var nTextSize: 12;
+    property var nTextSize: 10;
     property var nIndex: 0;
 
     signal cToolButtonIndexBack(var nIndex);
@@ -17,8 +17,8 @@ Rectangle {
     Image
     {
         id: cToolButtonImage;
-        width: 24;
-        height: 24;
+        width: 18;
+        height: 18;
         anchors.horizontalCenter: parent.horizontalCenter;
         anchors.top: parent.top;
         source: sNormalImage;
@@ -30,7 +30,7 @@ Rectangle {
         width: parent.width;
         height: 70;
         anchors.top: parent.top;
-        anchors.topMargin: 10;
+        anchors.topMargin: 5;
         horizontalAlignment: Text.AlignHCenter;
         verticalAlignment: Text.AlignVCenter;
         wrapMode: Text.WordWrap;

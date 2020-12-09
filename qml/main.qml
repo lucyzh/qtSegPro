@@ -47,7 +47,9 @@ Window {
         anchors.left: parent.left;
         anchors.top: parent.top;
         anchors.topMargin: 50;
-        anchors.leftMargin: 70;
+        anchors.leftMargin: 50;
+        anchors.rightMargin:10;
+        anchors.bottomMargin: 200;
 
         MouseArea
         {
@@ -134,6 +136,31 @@ Window {
             }
         }
     }
+
+    ParameterRect
+    {
+        id: parameterRect;
+        z:0.1;
+        anchors.left: imageOpen.left;
+        anchors.top: imageOpen.bottom;
+        anchors.topMargin: 2;
+        anchors.bottomMargin: 2;
+        width: imageOpen.width;
+        height: 120;
+    }
+
+    ParameterRectTwo
+    {
+        id: parameterRectTwo;
+        z:0.1;
+        anchors.left: segResultRect.left;
+        anchors.top: segResultRect.bottom;
+        anchors.topMargin: 2;
+        anchors.bottomMargin: 2;
+        width: segResultRect.width;
+        height: 120;
+    }
+
     SegResultRect
     {  //  分割结果显示区域
         id: segResultRect;
@@ -142,6 +169,7 @@ Window {
         anchors.top: parent.top;
         anchors.topMargin: 50;
         anchors.leftMargin:  parent.width / 2 ;
+        anchors.bottomMargin: 200;
     }
 
     LeftToolBar       //矩形工具、画笔工具等工具栏
@@ -151,7 +179,7 @@ Window {
         anchors.left:parent.left;
         anchors.top: parent.top;
         anchors.topMargin: 50;
-        width: 70;
+        width: 50;
         height: parent.height;
         color: "#404040";
     }
@@ -162,7 +190,7 @@ Window {
         anchors.right:parent.right;
         anchors.top: parent.top;
         anchors.topMargin: 50;
-        width: 70;
+        width: 50;
         height: parent.height;
         color: "#404040";
     }
@@ -174,7 +202,7 @@ Window {
         z:0.3;
         anchors.bottom: parent.bottom;
         width: parent.width;
-        height: 30;
+        height: 20;
         color: "#777777";
     }
 

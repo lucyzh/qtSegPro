@@ -6,10 +6,9 @@ Rectangle{
     id:segResultRect       //分割结果显示框
     color: "#C1C1C1";
     border.color: "white";
-    height: parent.height-100;
-    width: parent.width/2-70;
-    anchors.bottom: parent.bottom;
-    anchors.bottomMargin: 20;
+    height: parent.height-200;
+    width: parent.width/2-45;
+    anchors.bottom: parent.bottom-200;
 
     ImageProItem{
         id:imageSeg
