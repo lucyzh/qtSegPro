@@ -24,7 +24,7 @@ Rectangle{
         font.pixelSize: 16;
         font.letterSpacing: 1;
         font.bold: true;
-        text: "中华文化元素分割系统";
+        text: "传统民族纹饰图像分割系统";
     }
 
     Row

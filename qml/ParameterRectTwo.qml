@@ -9,7 +9,7 @@ Rectangle{   //参数2
         title: "保存结果功能区";
         id: saveBtnArea;
         z: 0.2;
-        width: 200;
+        width: 180;
         height: 100;
 
         // 自动分割模式功能按钮区
@@ -17,8 +17,8 @@ Rectangle{   //参数2
             id: funcBtns;
             anchors.left: gbMode.right;
             anchors.top: gbMode.top;
-            anchors.leftMargin: 20;
-            anchors.topMargin: 20;
+//            anchors.leftMargin: 10;
+//            anchors.topMargin: 10;
             color: "transparent";
             width: 100;
             height: 80;
@@ -27,33 +27,17 @@ Rectangle{   //参数2
             Button {
                 id: loadMaskBtn;
                 anchors.top: parent.top+10;
+                anchors.left: segResultRect.left;
                 width: 80;
                 height: 30;
+
                 Text {
                     text: "加载掩膜";
                     font.pixelSize: 12;
                     anchors.top: parent.top;
                     anchors.left: parent.left;
                     anchors.topMargin: 8;
-                    anchors.leftMargin: 10;
-                    horizontalAlignment: Text.AlignHCenter;
-                    verticalAlignment: Text.AlignVCenter;
-                }
-            }
-
-            // 保存显著图
-            Button {
-                id: saveSalMapBtn;
-                anchors.top: parent.top+10;
-                width: 80;
-                height: 30;
-                Text {
-                    text: "保存显著图";
-                    font.pixelSize: 12;
-                    anchors.top: parent.top;
-                    anchors.left: parent.left;
-                    anchors.topMargin: 8;
-                    anchors.leftMargin: 10;
+                    anchors.leftMargin: 15;
                     horizontalAlignment: Text.AlignHCenter;
                     verticalAlignment: Text.AlignVCenter;
                 }
@@ -62,7 +46,8 @@ Rectangle{   //参数2
             // 保存掩膜
             Button {
                 id: saveMaskBtn;
-                anchors.top: parent.top+10;
+                anchors.top: loadMaskBtn.bottom;
+                anchors.left: parent.left;
                 width: 80;
                 height: 30;
                 Text {
@@ -71,7 +56,26 @@ Rectangle{   //参数2
                     anchors.top: parent.top;
                     anchors.left: parent.left;
                     anchors.topMargin: 8;
-                    anchors.leftMargin: 10;
+                    anchors.leftMargin: 15;
+                    horizontalAlignment: Text.AlignHCenter;
+                    verticalAlignment: Text.AlignVCenter;
+                }
+            }
+
+            // 保存显著图
+            Button {
+                id: saveSalMapBtn;
+                anchors.top: loadMaskBtn.top;
+                anchors.left: loadMaskBtn.right;
+                width: 80;
+                height: 30;
+                Text {
+                    text: "保存显著图";
+                    font.pixelSize: 12;
+                    anchors.top: parent.top;
+                    anchors.left: parent.left;
+                    anchors.topMargin: 8;
+                    anchors.leftMargin: 8;
                     horizontalAlignment: Text.AlignHCenter;
                     verticalAlignment: Text.AlignVCenter;
                 }
@@ -80,7 +84,8 @@ Rectangle{   //参数2
             // 保存分割结果
             Button {
                 id: saveSegBtn;
-                anchors.top: parent.top+10;
+                anchors.top: saveMaskBtn.top;
+                anchors.left: saveSalMapBtn.left;
                 width: 80;
                 height: 30;
                 Text {
@@ -89,7 +94,7 @@ Rectangle{   //参数2
                     anchors.top: parent.top;
                     anchors.left: parent.left;
                     anchors.topMargin: 8;
-                    anchors.leftMargin: 10;
+                    anchors.leftMargin: 3;
                     horizontalAlignment: Text.AlignHCenter;
                     verticalAlignment: Text.AlignVCenter;
                 }
